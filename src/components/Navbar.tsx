@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import safarImg from "../assets/images/LinkedIn_icon_circle.svg.png";
-import Signup from "./signup/Signup";
-
+import Signup from "./Signup";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../state/auth/authSlice";
+import MainForm from "./MainForm";
 const Navbar = () => {
+  const { userInfo } = useSelector((state: any) => state.auth);
+  const dispatch = useDispatch();
   return (
     <nav className="relative my-4 container mx-auto">
       <div className="flex items-center justify-center gap-4">
@@ -13,8 +17,15 @@ const Navbar = () => {
               دانلود اپلیکیشن
             </NavLink>
             <div className="">
-              <Signup />
+              {userInfo ? (
+                <>
+                  <p>{userInfo.data.username}</p>
+                </>
+              ) : (
+                <MainForm />
+              )}
             </div>
+            {/* <button onClick={dispatch(logOut())}>خروج</button> */}
           </div>
           <div className="flex gap-10">
             <NavLink to="">

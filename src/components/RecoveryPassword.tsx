@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Signup from "./signup/Signup";
+import Signup from "./Signup";
 
 const RecoveryPassword = () => {
   return (
