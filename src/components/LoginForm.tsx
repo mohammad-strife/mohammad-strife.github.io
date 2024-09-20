@@ -1,7 +1,8 @@
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "../api/axios";
-
+import { Button } from "@/components/ui/button";
 import {
   DialogDescription,
   DialogFooter,
@@ -10,12 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Signup from "./Signup";
 import RecoveryPassword from "./RecoveryPassword";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { DialogTrigger } from "@radix-ui/react-dialog";
-import SignupForm from "./SignupForm";
 
 const UserSchema = z.object({
   cellphone: z.string().min(11, {
@@ -86,8 +82,6 @@ const LoginForm = ({ setStep }: any) => {
             >
               Reister
             </button>
-
-            {/* <SignupForm /> */}
           </DialogDescription>
         </DialogFooter>
       </form>

@@ -9,9 +9,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Login from "./Login";
 import axios from "../api/axios";
-import LoginForm from "./LoginForm";
 
 const UserSchema = z.object({
   username: z.string().min(3, {

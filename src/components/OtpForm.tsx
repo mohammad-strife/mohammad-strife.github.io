@@ -3,20 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useLoginMutation } from "@/state/auth/usersApiSlice";
-import { setCredentials } from "@/state/auth/authSlice";
+import { setCredentials } from "@/app/slices/authSlice";
 import axios from "../api/axios";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { toast } from "react-toastify";
 
 const OtpForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
+  const [code, setCode] = useState(false);
 
   const { userInfo } = useSelector((state: any) => state.auth);
 
@@ -36,13 +37,16 @@ const OtpForm = () => {
             headers: { "Content-Type": "application/json" },
           }
         );
+        console.log({ ...response }, "response");
         dispatch(setCredentials({ ...response }));
         setMessage("کد وارد شده صحیح می باشد");
-        setError(true);
+        setCode(true);
+      } else {
+        throw new Error();
       }
-    } catch (error) {
+    } catch (err: any) {
       setMessage("کد وارد شده اشتباه است");
-      setError(false);
+      toast.error("کد وارد شده اشتباه است");
     }
   };
 
@@ -57,7 +61,7 @@ const OtpForm = () => {
         </DialogTitle>
         <DialogTitle
           className={
-            error ? "text-green-500 text-right" : "text-red-500 text-right"
+            code ? "text-green-500 text-right" : "text-red-500 text-right"
           }
         >
           {message}

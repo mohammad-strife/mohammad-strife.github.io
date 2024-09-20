@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Signup from "./Signup";
 
 const RecoveryPassword = () => {
   return (
@@ -50,7 +49,6 @@ const RecoveryPassword = () => {
           </Button>
           <DialogDescription className="text-center my-2">
             <p className="p-0 m-0">حساب کاربری ندارید؟</p>
-            <Signup isHome={false} />
           </DialogDescription>
           <DialogDescription className="text-center"></DialogDescription>
         </DialogFooter>

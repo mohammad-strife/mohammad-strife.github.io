@@ -4,7 +4,6 @@ import { useState } from "react";
 import SignupForm from "./SignupForm";
 import OtpForm from "./OtpForm";
 import LoginForm from "./LoginForm";
-import Login from "./Login";
 
 const MainForm = () => {
   const [step, setStep] = useState("Register");
