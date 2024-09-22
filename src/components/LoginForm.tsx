@@ -45,11 +45,11 @@ const LoginForm = ({ setStep }: any) => {
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-center">ورود به حساب کاربری</DialogTitle>
+        <p className="text-center mt-16 text-3xl my-4">ورود به حساب کاربری</p>
       </DialogHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4 py-4">
-          <Label htmlFor="cellphone" className="text-right font-bold">
+          <Label htmlFor="cellphone" className="text-right text-xl">
             شماره موبایل
           </Label>
           <div className="grid grid-cols-1 gap-4">
@@ -59,28 +59,32 @@ const LoginForm = ({ setStep }: any) => {
               className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400 text-right"
               placeholder="رمز عبور خود را وارد کنید"
             />
-            {errors.cellphone && (
-              <div className="text-red-500">{errors.cellphone.message}</div>
-            )}
           </div>
-          <RecoveryPassword />
+          {errors.cellphone && (
+            <div className="text-red-500 text-right">{errors.cellphone.message}</div>
+          )}
+          <button
+            type="button"
+            onClick={() => setStep("RecoveryPassword")}
+            className="text-red-500 h-1/2 bg-white font-bold underline decoration-red-500 flex justify-end p-0"
+          >
+            <small> رمز عبور خود را فراموش کرده ام </small>
+          </button>
         </div>
         <DialogFooter className="w-full grid grid-cols-1">
-          <Button
-            className="bg-btnOrange hover:bg-btnOrange w-1/2 mx-auto block"
-            type="submit"
-          >
+          <Button className="w-1/2 mx-auto mt-10" type="submit">
             ورود
           </Button>
-          <DialogDescription className="text-center my-2">
-            <p>حساب کاربری ندارید؟</p>
+          <DialogDescription className="text-center">
+            <p className="mt-2">حساب کاربری ندارید؟</p>
             <button
               type="button"
               onClick={() => {
                 setStep("Register");
               }}
+              className="mt-2"
             >
-              Reister
+              ثبت نام
             </button>
           </DialogDescription>
         </DialogFooter>

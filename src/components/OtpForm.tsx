@@ -73,7 +73,7 @@ const OtpForm = () => {
         }}
         maxLength={4}
       >
-        <InputOTPGroup className="mx-auto gap-2">
+        <InputOTPGroup className="mx-auto gap-2" id="otp">
           <InputOTPGroup>
             <InputOTPSlot index={0} />
           </InputOTPGroup>
@@ -90,7 +90,7 @@ const OtpForm = () => {
       </InputOTP>
       <button
         type="submit"
-        className="bg-btnOrange rounded-lg p-2 m-auto w-1/2"
+        className="bg-btnOrange rounded-lg p-2 m-auto w-1/2 mt-10"
         onClick={otpForm}
       >
         ادامه

@@ -53,6 +53,10 @@ export default {
         bgNav: "rgba(30, 181, 255, 1)",
         btnOrange: "rgba(255, 171, 22, 1)",
         btnApp: "rgba(255, 143, 0, 1)",
+        otp: "rgba(0, 125, 240, 1)",
+        shadowInputs: "rgba(6, 152, 255, 1)",
+        inputBorder: "rgba(121, 121, 121, 1)",
+        
       },
     },
   },

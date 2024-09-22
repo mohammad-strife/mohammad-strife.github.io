@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "../api/axios";
+import { Button } from "./ui/button";
 
 const UserSchema = z.object({
   username: z.string().min(3, {
@@ -51,11 +52,11 @@ const SignupForm = ({ setStep }: any) => {
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-center">فرم ثبت نام</DialogTitle>
+        <p className="text-center mt-16 text-3xl my-4">فرم ثبت نام</p>
       </DialogHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4 py-4">
-          <Label htmlFor="name" className="text-right">
+          <Label htmlFor="name" className="text-right text-xl">
             نام و نام خانوادگی
           </Label>
           <div className="grid grid-cols-1 gap-4">
@@ -64,11 +65,13 @@ const SignupForm = ({ setStep }: any) => {
               id="name"
               className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400"
             />
-            {errors.username && (
-              <div className="text-red-500">{errors.username.message}</div>
-            )}
           </div>
-          <Label htmlFor="phone" className="text-right">
+          {errors.username && (
+            <div className="text-red-500 text-right">
+              {errors.username.message}
+            </div>
+          )}
+          <Label htmlFor="phone" className="text-right text-xl">
             شماره موبایل
           </Label>
           <div className="grid grid-cols-1 gap-4">
@@ -77,24 +80,31 @@ const SignupForm = ({ setStep }: any) => {
               id="phone"
               className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400"
             />
-            {errors.cellphone && (
-              <div className="text-red-500">{errors.cellphone.message}</div>
-            )}
           </div>
+          {errors.cellphone && (
+            <div className="text-red-500 text-right">
+              {errors.cellphone.message}
+            </div>
+          )}
         </div>
         <DialogFooter className="grid grid-cols-1">
-          <button disabled={isSubmitting} type="submit">
+          <Button
+            disabled={isSubmitting}
+            type="submit"
+            className="w-1/2 mx-auto mt-10"
+          >
             {isSubmitting ? "در حال ارسال" : "ادامه"}
-          </button>
+          </Button>
           <DialogDescription className="text-center my-2">
-            <p>قبلا ثبت نام کرده‌اید؟</p>
+            <p className="mt-2">قبلا ثبت نام کرده‌اید؟</p>
             <button
               type="button"
               onClick={() => {
                 setStep("Login");
               }}
+              className="mt-2 underline"
             >
-              Login
+              ورود
             </button>
           </DialogDescription>
         </DialogFooter>
