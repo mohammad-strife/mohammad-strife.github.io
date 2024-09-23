@@ -56,20 +56,22 @@ const LoginForm = ({ setStep }: any) => {
             <Input
               {...register("cellphone")}
               id="cellphone"
-              className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400 text-right"
-              placeholder="رمز عبور خود را وارد کنید"
+              className="col-span-3 focus-visible:border-shadowInputs text-right"
+              placeholder="شماره موبایل خود را وارد کنید"
             />
           </div>
           {errors.cellphone && (
-            <div className="text-red-500 text-right">{errors.cellphone.message}</div>
+            <div className="text-red-500 text-right">
+              {errors.cellphone.message}
+            </div>
           )}
-          <button
+          {/* <button
             type="button"
             onClick={() => setStep("RecoveryPassword")}
             className="text-red-500 h-1/2 bg-white font-bold underline decoration-red-500 flex justify-end p-0"
           >
             <small> رمز عبور خود را فراموش کرده ام </small>
-          </button>
+          </button> */}
         </div>
         <DialogFooter className="w-full grid grid-cols-1">
           <Button className="w-1/2 mx-auto mt-10" type="submit">

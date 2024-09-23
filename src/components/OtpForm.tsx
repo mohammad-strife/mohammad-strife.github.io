@@ -11,6 +11,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { toast } from "react-toastify";
+import { FiClock } from "react-icons/fi";
 
 const OtpForm = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,17 @@ const OtpForm = () => {
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
   const [code, setCode] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(5);
+
+  useEffect(() => {
+    if (timeLeft === 0) return;
+
+    const timerId = setInterval(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
 
   const { userInfo } = useSelector((state: any) => state.auth);
 
@@ -88,13 +100,23 @@ const OtpForm = () => {
           </InputOTPGroup>
         </InputOTPGroup>
       </InputOTP>
+      <div className="flex justify-end items-center gap-1 px-16">
+        <span className="mb-1">
+          {timeLeft ? "ثانیه تا دریافت مجدد کد" : "ارسال مجدد کد"}
+        </span>
+        <span>{timeLeft || ""}</span>
+        <FiClock className="text-clock" />
+      </div>
       <button
+        id='nextStep'
         type="submit"
         className="bg-btnOrange rounded-lg p-2 m-auto w-1/2 mt-10"
         onClick={otpForm}
       >
         ادامه
       </button>
+
+      <small className="mb-10 mt-5 text-center underline">ویرایش شماره موبایل</small>
     </>
   );
 };

@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {
       borderRadius: {
@@ -56,9 +60,10 @@ export default {
         otp: "rgba(0, 125, 240, 1)",
         shadowInputs: "rgba(6, 152, 255, 1)",
         inputBorder: "rgba(121, 121, 121, 1)",
-        
+        clock: "rgba(255, 143, 0, 1)",
+        footer: "rgba(14, 69, 58, 1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("flowbite/plugin")],
 };

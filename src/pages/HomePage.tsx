@@ -1,3 +1,5 @@
+import Hero from "@/components/Hero";
+import SelectedArticles from "@/components/SelectedArticles";
 import { FaEarthEurope } from "react-icons/fa6";
 
 const HomePage = () => {
@@ -7,7 +9,8 @@ const HomePage = () => {
         <FaEarthEurope />
         فارسی
       </div>
-      
+      <Hero />
+      <SelectedArticles />
     </section>
   );
 };

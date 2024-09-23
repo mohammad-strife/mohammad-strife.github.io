@@ -63,7 +63,7 @@ const SignupForm = ({ setStep }: any) => {
             <Input
               {...register("username")}
               id="name"
-              className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400"
+              className="col-span-3 focus-visible:border-shadowInputs"
             />
           </div>
           {errors.username && (
@@ -78,7 +78,7 @@ const SignupForm = ({ setStep }: any) => {
             <Input
               {...register("cellphone")}
               id="phone"
-              className="col-span-3 focus-visible:ring-offset-0 focus-visible:ring-blue-400"
+              className="col-span-3 focus-visible:border-shadowInputs"
             />
           </div>
           {errors.cellphone && (
