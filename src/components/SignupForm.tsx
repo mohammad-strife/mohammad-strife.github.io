@@ -4,7 +4,6 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,7 +34,7 @@ const SignupForm = ({ setStep }: any) => {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post("/auth/signup", JSON.stringify(data), {
+      const response = await axios.post("", JSON.stringify(data), {
         headers: { "Content-Type": "application/json" },
       });
 

@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "3xl": "-4px 8px 74.3px 0px rgba(0, 0, 0, 0.19)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -62,6 +65,7 @@ export default {
         inputBorder: "rgba(121, 121, 121, 1)",
         clock: "rgba(255, 143, 0, 1)",
         footer: "rgba(14, 69, 58, 1)",
+        profile: "rgba(3, 201, 201, 1)",
       },
     },
   },
