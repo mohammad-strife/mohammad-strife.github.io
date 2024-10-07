@@ -2,11 +2,11 @@ import { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { CiBellOn } from "react-icons/ci";
 import { HiOutlineTicket } from "react-icons/hi";
-import { IoExitOutline, IoOpen } from "react-icons/io5";
+import { IoExitOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { logout } from "../app/slices/authSlice";
+import { logout } from "../../app/slices/authSlice";
 import { SlClose } from "react-icons/sl";
 import linkedin from "../assets/images/LinkedIn_icon_circle.svg.png";
 
@@ -57,7 +57,7 @@ const SidebarMenu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/profile">
+            <Link to="/my-ticket">
               <HiOutlineTicket className="size-5 my-3" />
             </Link>
           </li>

@@ -2,9 +2,8 @@ import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useLoginMutation } from "@/state/auth/usersApiSlice";
 import { setCredentials } from "@/app/slices/authSlice";
-import axios from "../api/axios";
+import axios from "../../api/axios";
 import {
   InputOTP,
   InputOTPGroup,
@@ -108,7 +107,7 @@ const OtpForm = () => {
         <FiClock className="text-clock" />
       </div>
       <button
-        id='nextStep'
+        id="nextStep"
         type="submit"
         className="bg-btnOrange rounded-lg p-2 m-auto w-1/2 mt-10"
         onClick={otpForm}
@@ -116,7 +115,9 @@ const OtpForm = () => {
         ادامه
       </button>
 
-      <small className="mb-10 mt-5 text-center underline">ویرایش شماره موبایل</small>
+      <small className="mb-10 mt-5 text-center underline">
+        ویرایش شماره موبایل
+      </small>
     </>
   );
 };

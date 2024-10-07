@@ -10,12 +10,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import linkdin from "../assets/images/LinkedIn_icon_circle.svg.png";
-import SidebarMenu from "../components/SidebarMenu";
-
+import SidebarMenu from "../components/menu/SidebarMenu";
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState({});
-
 
   useEffect(() => {
     const fetchUser = async () => {

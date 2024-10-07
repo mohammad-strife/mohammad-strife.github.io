@@ -8,8 +8,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "../api/axios";
-import { Button } from "./ui/button";
+import axios from "../../api/axios";
+import { Button } from "../ui/button";
 
 const UserSchema = z.object({
   username: z.string().min(3, {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { RxTextAlignJustify } from "react-icons/rx";
 import { useState } from "react";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { RiSearch2Line } from "react-icons/ri";
 import { CiMobile3 } from "react-icons/ci";
 import { CgFileDocument } from "react-icons/cg";

@@ -2,21 +2,21 @@ import { NavLink } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { FaUser } from "react-icons/fa6";
 import safarImg from "../assets/images/LinkedIn_icon_circle.svg.png";
-import { useDispatch, useSelector } from "react-redux";
-import MainForm from "./MainForm";
+import { useSelector } from "react-redux";
+import MainForm from "../authentication/MainForm";
 import Offcanvans from "./Offcanvans";
 const Navbar = () => {
   const { userInfo } = useSelector((state: any) => state.auth);
 
   return (
-    <nav className="relative my-4 container mx-auto">
-      <div className="flex items-center justify-center gap-4">
+    <nav className="relative container mx-auto">
+      <div className="flex items-center justify-center gap-4 pt-5">
         <div
-          className={
+          className={`flex items-center p-4 text-white rounded-lg gap-20 w-2/3 justify-between ${
             userInfo
-              ? "flex items-center p-4 text-white rounded-lg bg-white border-2 border-blue-300 gap-20 w-2/3 justify-between"
-              : "flex items-center p-4 text-white rounded-lg bg-bgNav gap-20 w-2/3 justify-between"
-          }
+              ? `bg-white border-2 border-blue-300 justify-between`
+              : `bg-bgNav`
+          }`}
         >
           <div className="flex gap-3">
             <NavLink

@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
-import NewArticles from "@/components/NewArticles";
-import SelectedArticles from "@/components/SelectedArticles";
+import NewArticles from "@/components/articles/NewArticles";
+import SelectedArticles from "@/components/articles/SelectedArticles";
 import { FaEarthEurope } from "react-icons/fa6";
 
 const HomePage = () => {
