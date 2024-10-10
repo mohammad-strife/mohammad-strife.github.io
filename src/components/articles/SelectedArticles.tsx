@@ -1,4 +1,4 @@
-import article from "../assets/images/nature-background-with-tropical-plants_84e.jpeg";
+import article from "../../assets/images/footer-image.png";
 
 const SelectedArticles = () => {
   return (

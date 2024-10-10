@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import linkdin from "../assets/images/LinkedIn_icon_circle.svg.png";
+import profileImg from "../assets/images/main-logo.png";
 import SidebarMenu from "../components/menu/SidebarMenu";
 
 const ProfilePage = () => {
@@ -31,7 +31,7 @@ const ProfilePage = () => {
       <div className="mt-16 flex justify-center">
         <Card className="w-[340px]">
           <CardHeader>
-            <img src={linkdin} alt="" className="size-16 mx-auto" />
+            <img src={profileImg} alt="" className="size-16 mx-auto" />
             <p className="text-center text-white">محمد زارعی</p>
           </CardHeader>
           <CardContent>

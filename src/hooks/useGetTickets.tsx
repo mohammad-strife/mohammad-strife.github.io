@@ -8,12 +8,13 @@ const useGetTickets = () => {
   useEffect(() => {
     const getTickets = async () => {
       try {
-        const res = await fetch("");
-        const data = await res.json();
-        if (data.error) {
-          throw new Error(data.error);
-        }
-        setTickets(data);
+        // const res = await fetch("");
+        // const data = await res.json();
+        // if (data.error) {
+        //   throw new Error(data.error);
+        // }
+        // setTickets(data);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (error: any) {
         toast.error(error.message);
       } finally {

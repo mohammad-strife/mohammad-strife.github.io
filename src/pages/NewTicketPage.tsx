@@ -14,7 +14,7 @@ const TicketSchema = z.object({
 });
 type FormField = z.infer<typeof TicketSchema>;
 
-const CreateTicketPage = () => {
+const NewTicketPage = () => {
   const {
     register,
     handleSubmit,
@@ -40,13 +40,7 @@ const CreateTicketPage = () => {
   return (
     <div className="w-[992px] mx-auto bg-bgTicket rounded-lg my-20">
       <div className="grid grid-cols-12 p-3 border-b-2 border-gray-400">
-        <div className="col-span-2">
-          <Link to="/my-ticket">
-            <IoArrowBackCircle className="text-arrow text-2xl" />
-          </Link>
-        </div>
-
-        <div className="text-right col-span-4 col-start-9">
+        <div className="text-right col-span-4">
           <p className="text-2xl">ایجاد تیکت</p>
           <span>
             تیکت های ارسالی شما در اسرع وقت پاسخ داده خواهد شد ساعت پاسخ گویی
@@ -54,9 +48,25 @@ const CreateTicketPage = () => {
             تعطیل رسمی)
           </span>
         </div>
+        <div className="col-span-2 col-start-13">
+          <Link to="/my-tickets">
+            <IoArrowBackCircle className="text-arrow text-2xl" />
+          </Link>
+        </div>
       </div>
       <form className="p-8" onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-12 px-4 gap-7 text-right">
+        <div className="grid grid-cols-12 px-4 gap-7">
+          <div className="col-span-6">
+            <label htmlFor="ticket" className="text-2xl my-2">
+              عنوان تیکت
+            </label>
+            <input
+              {...register("title")}
+              type="text"
+              id="ticket"
+              className="rounded-md text-right w-full"
+            />
+          </div>
           <div className="col-span-6">
             <label htmlFor="priority" className="text-2xl my-2">
               اولویت
@@ -71,17 +81,6 @@ const CreateTicketPage = () => {
               <option value="middle">وسط</option>
               <option value="low">پایین</option>
             </select>
-          </div>
-          <div className="col-span-6">
-            <label htmlFor="ticket" className="text-2xl my-2">
-              عنوان تیکت
-            </label>
-            <input
-              {...register("title")}
-              type="text"
-              id="ticket"
-              className="rounded-md text-right w-full"
-            />
           </div>
         </div>
         {errors.title && (
@@ -99,24 +98,23 @@ const CreateTicketPage = () => {
             className="w-[890px] h-[461px] rounded-md mx-auto bg-inputTicket"
           ></textarea>
         </div>
-        <div className="text-right mr-4 mt-10 space-x-5 flex justify-end">
-          <button
-            className="bg-btnOrange p-2 rounded-md"
-            disabled={isSubmitting}
-          >
-                        {isSubmitting ? "در حال ارسال" : "ارسال تیکت"}
-            
-          </button>
+        <div className="mr-4 mt-10 flex gap-3">
           <p className="bg-inputTicket p-2 rounded-md cursor-pointer">
             <span className="flex items-center gap-2">
               <IoDocument />
               ارسال پیوست
             </span>
           </p>
+          <button
+            className="bg-btnOrange p-2 rounded-md"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "در حال ارسال" : "ارسال تیکت"}
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default CreateTicketPage;
+export default NewTicketPage;

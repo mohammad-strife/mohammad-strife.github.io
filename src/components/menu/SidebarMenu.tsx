@@ -8,7 +8,7 @@ import { IoMenu } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { logout } from "../../app/slices/authSlice";
 import { SlClose } from "react-icons/sl";
-import linkedin from "../assets/images/LinkedIn_icon_circle.svg.png";
+import linkedin from "../../assets/images/LinkedIn_icon_circle.svg.png";
 
 const SidebarMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +57,7 @@ const SidebarMenu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/my-ticket">
+            <Link to="/my-tickets">
               <HiOutlineTicket className="size-5 my-3" />
             </Link>
           </li>

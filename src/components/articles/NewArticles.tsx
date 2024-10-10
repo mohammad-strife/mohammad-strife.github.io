@@ -1,5 +1,5 @@
 import { IoCalendarOutline } from "react-icons/io5";
-import article from "../assets/images/nature-background-with-tropical-plants_84e.jpeg";
+import article from "../../assets/images/footer-image.png";
 import { FiClock } from "react-icons/fi";
 
 const NewArticles = () => {

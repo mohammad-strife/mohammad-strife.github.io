@@ -1,18 +1,19 @@
 import useGetTickets from "@/hooks/useGetTickets";
 import Ticket from "./Ticket";
+import Spinner from "../Spinner";
 
 const Tickets = () => {
-  // const { loading, tickets } = useGetTickets();
+  const { loading, tickets } = useGetTickets();
   return (
-    <div className="h-screen">
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
-    </div>
+    <>
+      {loading ? (
+        <Spinner loading={loading} />
+      ) : (
+        <div className="h-screen">
+          <Ticket />
+        </div>
+      )}
+    </>
   );
 };
 

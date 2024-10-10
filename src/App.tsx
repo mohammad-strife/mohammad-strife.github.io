@@ -8,9 +8,10 @@ import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
-import CreateTicketPage from "./pages/CreateTicketPage";
+import NewTicketPage from "./pages/NewTicketPage";
 import MyTicketsPage from "./pages/MyTicketsPage";
 import ViewTicketPage from "./pages/ViewTicketPage";
+import ArticlesPage from "./pages/ArticlesPage";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -19,10 +20,13 @@ const App = () => {
         <Route index element={<HomePage />} />
         {/* Private Routes */}
         <Route path="" element={<PrivateRoute />}>
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="/my-ticket" element={<MyTicketsPage />} />
-          <Route path="/create-ticket" element={<CreateTicketPage />} />
-          <Route path="/view-ticket" element={<ViewTicketPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/my-tickets">
+            <Route index element={<MyTicketsPage />} />
+            <Route path="new-ticket" element={<NewTicketPage />} />
+            <Route path="view-ticket/:id" element={<ViewTicketPage />} />
+          </Route>
+          <Route path="/articles" element={<ArticlesPage />} />
         </Route>
       </Route>
     )

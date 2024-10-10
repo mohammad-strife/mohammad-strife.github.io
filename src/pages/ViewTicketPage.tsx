@@ -9,7 +9,7 @@ const ViewTicketPage = () => {
       {/* top section */}
       <div className="grid grid-cols-12 p-6 border-b-2 border-gray-400">
         <div className="col-span-2 flex items-center">
-          <Link to="/my-ticket">
+          <Link to="/my-tickets">
             <IoArrowBackCircle className="text-arrow text-2xl" />
           </Link>
         </div>

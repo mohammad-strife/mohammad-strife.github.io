@@ -1,12 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/flowbite/**/*.js",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      sm: "600px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "850px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1214px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1300px",
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       boxShadow: {
         "3xl": "-4px 8px 74.3px 0px rgba(0, 0, 0, 0.19)",
@@ -72,12 +84,9 @@ export default {
         ticketState: "rgba(255, 245, 0, 1)",
         notif: "rgba(6, 152, 255, 1)",
         arrow: "rgba(6, 152, 255, 1)",
+        bgFilter: "rgba(0, 160, 163, 1)",
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("flowbite/plugin"),
-    require("daisyui"),
-  ],
+  plugins: [require("tailwindcss-animate"), require("daisyui")],
 };
