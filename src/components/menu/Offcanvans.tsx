@@ -19,7 +19,7 @@ const Offcanvans = () => {
         <div className="drawer-content">
           {/* Page content here */}
           <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
-            <RxTextAlignJustify className="size-7"/>
+            <RxTextAlignJustify className="size-7" />
           </label>
         </div>
         <div className="drawer-side">
@@ -87,65 +87,6 @@ const Offcanvans = () => {
           </div>
         </div>
       </div>
-
-      {/* install flowbite */}
-      {/* <!-- drawer component --> */}
-      {/* <div
-        id="drawer-right-example"
-        className="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full w-80 bg-white"
-        aria-labelledby="drawer-right-label"
-      >
-        <h5
-          id="drawer-right-label"
-          className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
-        ></h5>
-        <button
-          type="button"
-          data-drawer-hide="drawer-right-example"
-          aria-controls="drawer-right-example"
-          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
-        >
-          <svg
-            className="w-3 h-3"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-            />
-          </svg>
-          <span className="sr-only">Close menu</span>
-        </button>
-
-        <div className="mt-10">
-          <div className="">
-
-          </div>
-          <ul className="text-black text-xl">
-            <li>
-             
-            </li>
-            <li>
-              
-            </li>
-            <li>
-              
-            </li>
-            <li>
-              
-            </li>
-            <li>
-              
-            </li>
-          </ul>
-        </div>
-      </div> */}
     </>
   );
 };
