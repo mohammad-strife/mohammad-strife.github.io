@@ -13,10 +13,10 @@ export default {
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
-      xl: "1214px",
+      xl: "1150px",
       // => @media (min-width: 1280px) { ... }
 
-      "2xl": "1300px",
+      "2xl": "1222px",
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
@@ -85,6 +85,8 @@ export default {
         notif: "rgba(6, 152, 255, 1)",
         arrow: "rgba(6, 152, 255, 1)",
         bgFilter: "rgba(0, 160, 163, 1)",
+        hoverMenu: "rgba(157, 218, 249, 1)",
+        greenBlack:"rgba(4, 124, 129, 1)"
       },
     },
   },

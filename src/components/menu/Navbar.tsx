@@ -9,7 +9,7 @@ const Navbar = () => {
   const { userInfo } = useSelector((state: any) => state.auth);
 
   return (
-    <nav className="container mx-auto mb-10">
+    <nav className="container mx-auto mb-10 px-2 md:px-0  ">
       <div className="flex items-center justify-center gap-4 pt-5">
         <Link to="/">
           <img src={safarImg} className="w-20" alt="" />
@@ -23,7 +23,7 @@ const Navbar = () => {
             <NavLink to="/articles">مقالات گردشگری</NavLink>
             <NavLink to="">ایران شناسی</NavLink>
             <NavLink to="">برنامه‌ ریزی‌ سفر</NavLink>
-            <NavLink to="">تجربه های سفر</NavLink>
+            <NavLink to="/new-experience">تجربه های سفر</NavLink>
             <NavLink to="" className="flex items-center justify-center gap-1">
               جستجو
               <FiSearch />

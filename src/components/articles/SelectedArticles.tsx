@@ -1,56 +1,63 @@
-import article from "../../assets/images/footer-image.png";
+import { Link } from "react-router-dom";
+import articles from "../../assets/images/footer-image.png";
 
 const SelectedArticles = () => {
   return (
-    <section>
-      <div className="w-5/6 mx-auto text-right">
-        <p className="text-3xl mb-16">مقالات منتخب</p>
-        <div className="grid grid-cols-12 gap-5 text-white">
-          <div className="col-span-6">
-            <p className="relative bg-btnOrange rounded-md w-20 text-center top-12 left-5 py-1 text-black">
-              گردشگری
-            </p>
-            <img src={article} alt="" className="rounded-md" />
-            <p className="relative bottom-24 right-5 text-3xl w-1/2 ml-auto">
-              خوش مزه ترین غذا های شمال ایران
-            </p>
-          </div>
-          <div className="col-span-6">
-            <p className="relative bg-btnOrange rounded-md w-20 text-center top-12 left-5 py-1 text-black">
-              گردشگری
-            </p>
-            <img src={article} alt="" className="rounded-md" />
-            <p className="relative bottom-24 right-5 text-3xl w-1/2 ml-auto">
-              خوش مزه ترین غذا های شمال ایران
-            </p>
-          </div>
-          <div className="col-span-4">
-            <p className="relative bg-btnOrange rounded-md w-20 text-center top-12 left-5 py-1 text-black">
-              گردشگری
-            </p>
-            <img src={article} alt="" className="rounded-md" />
-            <p className="relative bottom-16 right-5 text-xl  w-1/2 ml-auto">
-              خوش مزه ترین غذا های شمال ایران
-            </p>
-          </div>
-          <div className="col-span-4">
-            <p className="relative bg-btnOrange rounded-md w-20 text-center top-12 left-5 py-1 text-black">
-              گردشگری
-            </p>
-            <img src={article} alt="" className="rounded-md" />
-            <p className="relative bottom-16 right-5 text-xl  w-1/2 ml-auto">
-              خوش مزه ترین غذا های شمال ایران
-            </p>
-          </div>
-          <div className="col-span-4">
-            <p className="relative bg-btnOrange rounded-md w-20 text-center top-12 left-5 py-1 text-black">
-              گردشگری
-            </p>
-            <img src={article} alt="" className="rounded-md" />
-            <p className="relative bottom-16 right-5 text-xl  w-1/2 ml-auto">
-              خوش مزه ترین غذا های شمال ایران
-            </p>
-          </div>
+    <section className="my-20">
+      <p className="text-3xl mb-10">مقالات منتخب این ماه</p>
+      <div className="grid grid-cols-12 text-white">
+        <div className="col-span-5 col-start-2 p-3 relative">
+          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md">
+            گردشگری
+          </span>
+          <img src={articles} alt="" className="rounded-md" />
+          <span className="absolute bottom-10 right-6 text-xl">
+            شب در یزد کجا برویم
+          </span>
+          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+        </div>
+        <div className="col-span-5 p-3 relative">
+          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md">
+            گردشگری
+          </span>
+          <img src={articles} alt="" className="rounded-md" />
+          <span className="absolute bottom-10 right-6 text-xl">
+            شب در یزد کجا برویم
+          </span>
+          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+        </div>
+
+        <div className="col-span-4 p-4 relative">
+          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+            گردشگری
+          </span>
+          <img src={articles} alt="" className="rounded-md" />
+          <span className="absolute bottom-10 right-6">
+            شب در یزد کجا برویم
+          </span>
+          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+        </div>
+
+        <div className="col-span-4 p-4 relative">
+          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+            گردشگری
+          </span>
+          <img src={articles} alt="" className="rounded-md" />
+          <span className="absolute bottom-10 right-6">
+            شب در یزد کجا برویم
+          </span>
+          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+        </div>
+
+        <div className="col-span-4 p-4 relative">
+          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+            گردشگری
+          </span>
+          <img src={articles} alt="" className="rounded-md" />
+          <span className="absolute bottom-10 right-6">
+            شب در یزد کجا برویم
+          </span>
+          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
         </div>
       </div>
     </section>

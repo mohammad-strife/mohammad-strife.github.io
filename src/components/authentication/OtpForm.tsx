@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "@/app/slices/authSlice";
-import axios from "../../api/axios";
+import axios from "@/api/axios";
 import {
   InputOTP,
   InputOTPGroup,
@@ -42,7 +42,7 @@ const OtpForm = () => {
     try {
       if (otp.length == 4) {
         const response = await axios.post(
-          "/auth/otp",
+          "/verify_sms",
           JSON.stringify({ otp }),
           {
             headers: { "Content-Type": "application/json" },

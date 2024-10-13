@@ -8,7 +8,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "../../api/axios";
+import axios from "@/api/axios";
 import { Button } from "../ui/button";
 
 const UserSchema = z.object({
@@ -34,7 +34,7 @@ const SignupForm = ({ setStep }: any) => {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post("", JSON.stringify(data), {
+      const response = await axios.post("/send_sms", JSON.stringify(data), {
         headers: { "Content-Type": "application/json" },
       });
 

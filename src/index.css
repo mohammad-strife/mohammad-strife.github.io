@@ -112,3 +112,28 @@ body {
 #sidbarOn li {
   margin-right: 15px;
 }
+
+.ck-content {
+  min-height: 300px;
+  padding: 0px 25px !important;
+  text-align: right !important;
+}
+.ck-content h2 {
+  font-size: 30px;
+}
+.ck-content h3 {
+  font-size: 25px;
+}
+.ck-content h4 {
+  font-size: 20px;
+}
+.ck-content p {
+  font-size: 15px;
+}
+
+#list_icons #link_tag:hover #fill_icons {
+  display: block !important;
+}
+#list_icons #link_tag:hover #outline_icons {
+  display: none !important;
+}
