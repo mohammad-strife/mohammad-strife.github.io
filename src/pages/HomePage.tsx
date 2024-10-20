@@ -1,16 +1,16 @@
 import Hero from "@/components/Hero";
 import NewArticles from "@/components/articles/NewArticles";
 import SelectedArticles from "@/components/articles/SelectedArticles";
-import { FaEarthEurope } from "react-icons/fa6";
+// import { FaEarthEurope } from "react-icons/fa6";
 
 const HomePage = () => {
   return (
-    <section className="container mx-auto grid grid-cols-12">
+    <section className="container mx-auto">
       {/* <div className="mx-auto flex items-center gap-2 pl-7">
         <FaEarthEurope />
         فارسی
       </div> */}
-      <div className="col-span-10 mx-auto col-start-2">
+      <div className="">
         <Hero />
         <SelectedArticles />
         <NewArticles />

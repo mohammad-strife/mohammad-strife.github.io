@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import linkedin from "@/assets/images/LinkedIn_icon_circle.svg.png";
 import { IoClose } from "react-icons/io5";
 import { IoMenu } from "react-icons/io5";
-import banana from "@/assets/video/banana.mp4";
+import banana from "@/assets/videos/banana.mp4";
 import axios from "@/api/axios";
 import { IoDocumentTextOutline, IoDocumentText } from "react-icons/io5";
 import { IoCheckmarkCircleOutline, IoCheckmarkCircle } from "react-icons/io5";
@@ -78,7 +78,7 @@ const NewExperience = () => {
               <Link
                 id="link_tag"
                 to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <IoDocumentTextOutline id="outline_icons" className="size-7" />
                 <IoDocumentText
@@ -89,8 +89,8 @@ const NewExperience = () => {
               </Link>
               <Link
                 id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                to="/published-article"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <IoCheckmarkCircleOutline
                   id="outline_icons"
@@ -105,7 +105,7 @@ const NewExperience = () => {
               <Link
                 id="link_tag"
                 to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <BsBarChartLine id="outline_icons" className="size-7" />
                 <BsBarChartLineFill
@@ -117,7 +117,7 @@ const NewExperience = () => {
               <Link
                 id="link_tag"
                 to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <IoHeartCircleOutline id="outline_icons" className="size-7" />
                 <IoHeartCircleSharp
@@ -129,7 +129,7 @@ const NewExperience = () => {
               <Link
                 id="link_tag"
                 to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <IoBookmarksOutline id="outline_icons" className="size-7" />
                 <IoBookmarks
@@ -141,7 +141,7 @@ const NewExperience = () => {
               <Link
                 id="link_tag"
                 to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu hover:rounded-md transition-all duration-300 delay-50 p-2"
+                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
               >
                 <RiMedalLine id="outline_icons" className="size-7" />
                 <RiMedalFill

@@ -7,27 +7,27 @@ import { Button } from "./ui/button";
 
 const Hero = () => {
   return (
-    <section className="mt-20 mx-auto">
-      <div className="bg-bgNav w-5/6 mx-auto px-8 rounded-md mb-20">
+    <section className="mt-20">
+      <div className="bg-bgNav p-5 rounded-md mb-20">
         <div className="grid grid-cols-2">
-          <div id="filterSide">
+          <div id="filterSide" className="col-span-2 md:col-span-1 order-2 md:order-1">
             <p className="text-right text-white mt-10 text-3xl">
               دیدنی های ایران رو کشف کن
             </p>
-            <div id="searchInput" className="relative mt-14">
+            <div id="searchInput" className="relative mt-14 pl-5">
               <RiSearch2Line className="absolute right-44 top-3 text-gray-500" />
               <input
                 type="text"
                 placeholder="هرجا رو میخوای جستجو کن"
-                className="rounded-md border border-btnOrange text-right w-96"
+                className="rounded-md border border-btnOrange text-right w-5/6 md:w-full p-2"
               />
             </div>
             <div className="flex items-center mt-10 text-white">
               <p className="text-right text-2xl">فیلتر کردن مکان</p>
               <FaFilter />
             </div>
-            <div id="filter" className="flex mt-10">
-              <div className="bg-stone-800 bg-opacity-65 w-2/3 grid grid-cols-3 text-white rounded-md">
+            <div id="filter" className="mt-10 w-5/6">
+              <div className="bg-stone-800 bg-opacity-65 grid grid-cols-3 text-white rounded-md">
                 <p className="col-span-3 text-right m-2">نوع جاذبه</p>
                 <div className="flex items-center m-3 gap-2">
                   <Label htmlFor="airplane-mode">مذهبی</Label>
@@ -49,8 +49,8 @@ const Hero = () => {
                   <Label htmlFor="airplane-mode">طبیعی</Label>
                   <Switch id="airplane-mode" />
                 </div>
-                <div className="col-span-3">
-                  <Button className="mx-6 my-4 rounded-full">
+                <div className="col-span-3 text-left">
+                  <Button className="mx-6 my-4 rounded-full bg-btnOrange">
                     اعمال فیلتر
                   </Button>
                 </div>
@@ -65,7 +65,7 @@ const Hero = () => {
               </button>
             </div>
           </div>
-          <div id="mapSide" className="flex items-center justify-center">
+          <div id="mapSide" className="col-span-2 md:col-span-1 flex items-center justify-center order-1 md:order-2">
             <img src={iran} alt="" />
           </div>
         </div>

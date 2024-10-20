@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import Tickets from "../components/ticket/Tickets";
+import Tickets from "../../components/tickets/Tickets";
 import { GoPlusCircle } from "react-icons/go";
 import { Link } from "react-router-dom";
 
@@ -19,11 +19,11 @@ const MyTicketsPage = () => {
         <div className="col-span-6 flex items-center justify-center gap-7">
           <div className="flex items-center gap-2">
             <Label htmlFor="airplane-mode">فقط پاسخ داده نشده</Label>
-            <Switch dir="ltr" id="airplane-mode" />
+            <Switch id="airplane-mode" />
           </div>
           <div className="flex items-center gap-2">
             <Label htmlFor="airplane-mode">فقط پاسخ داده شده</Label>
-            <Switch dir="ltr" id="airplane-mode" />
+            <Switch id="airplane-mode" />
           </div>
         </div>
       </div>

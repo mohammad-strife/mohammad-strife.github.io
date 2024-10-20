@@ -1,28 +1,25 @@
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
-  DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "@/api/axios";
 import { Button } from "../ui/button";
+import safarCo from "@/assets/images/main-logo.png";
 
 const UserSchema = z.object({
-  username: z.string().min(3, {
-    message: "نام و نام خانوادگی باید بیشتر از 3 حروف باشد",
-  }),
-  cellphone: z.string().min(11, {
+  mobile: z.string().min(11, {
     message: "شماره همراه حداقل باید 11 عدد باشد",
   }),
 });
 
 type FormFields = z.infer<typeof UserSchema>;
 
-const SignupForm = ({ setStep }: any) => {
+const SignupForm = ({ setStep, setMobile }: any) => {
   const {
     register,
     handleSubmit,
@@ -33,56 +30,41 @@ const SignupForm = ({ setStep }: any) => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post("/send_sms", JSON.stringify(data), {
+      await axios.post("/send_sms", JSON.stringify(data), {
         headers: { "Content-Type": "application/json" },
       });
 
-      console.log(response);
-
+      setMobile(data.mobile);
       UserSchema.safeParse(data).success && setStep("Otp");
-
-      console.log(JSON.stringify(data));
     } catch (error) {
-      console.log(error);
+      console.log({ message: "لطفا دقایقی بعد امتحان کنید" });
     }
   };
 
   return (
     <>
+      <div className="mx-auto">
+        <img src={safarCo} alt="" />
+      </div>
       <DialogHeader>
-        <p className="text-center mt-16 text-3xl my-4">فرم ثبت نام</p>
+        <p className="text-center text-2xl my-4">ورود | ثبت نام</p>
       </DialogHeader>
+      <DialogDescription>
+        <p>سلام!</p>
+        شماره موبایل خود را وارد کنید
+      </DialogDescription>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid gap-4 py-4">
-          <Label htmlFor="name" className="text-right text-xl">
-            نام و نام خانوادگی
-          </Label>
+        <div className="grid gap-4 my-2">
           <div className="grid grid-cols-1 gap-4">
             <Input
-              {...register("username")}
-              id="name"
-              className="col-span-3 focus-visible:border-shadowInputs"
-            />
-          </div>
-          {errors.username && (
-            <div className="text-red-500 text-right">
-              {errors.username.message}
-            </div>
-          )}
-          <Label htmlFor="phone" className="text-right text-xl">
-            شماره موبایل
-          </Label>
-          <div className="grid grid-cols-1 gap-4">
-            <Input
-              {...register("cellphone")}
+              {...register("mobile")}
               id="phone"
-              className="col-span-3 focus-visible:border-shadowInputs"
+              className="col-span-3 focus-visible:border-shadowInputs text-center tracking-wide text-gray-800 text-lg"
             />
           </div>
-          {errors.cellphone && (
+          {errors.mobile && (
             <div className="text-red-500 text-right">
-              {errors.cellphone.message}
+              {errors.mobile.message}
             </div>
           )}
         </div>
@@ -90,22 +72,10 @@ const SignupForm = ({ setStep }: any) => {
           <Button
             disabled={isSubmitting}
             type="submit"
-            className="w-1/2 mx-auto mt-10"
+            className="w-1/2 mx-auto mt-10 bg-btnApp text-white"
           >
-            {isSubmitting ? "در حال ارسال" : "ادامه"}
+            {isSubmitting ? "در حال ارسال" : "ورود"}
           </Button>
-          <DialogDescription className="text-center my-2">
-            <p className="mt-2">قبلا ثبت نام کرده‌اید؟</p>
-            <button
-              type="button"
-              onClick={() => {
-                setStep("Login");
-              }}
-              className="mt-2 underline"
-            >
-              ورود
-            </button>
-          </DialogDescription>
         </DialogFooter>
       </form>
     </>

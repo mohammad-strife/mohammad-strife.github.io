@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "../api/axios";
+import axios from "../../api/axios";
 
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Link } from "react-router-dom";

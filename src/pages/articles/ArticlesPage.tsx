@@ -31,35 +31,35 @@ const ArticlesPage = () => {
           >
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">گردشگری</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">تاریخی</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">تفریحی</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">مشاهیر</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">فرهنگی</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-3 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">غذا ها و خوراکی ها</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-3 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">اخبار گردشگری</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-2 flex justify-evenly items-center">
               <Label htmlFor="airplane-mode">مذهبی</Label>
-              <Switch id="airplane-mode" dir="ltr" />
+              <Switch id="airplane-mode" />
             </div>
             <div className="col-span-10 flex justify-end">
               <button

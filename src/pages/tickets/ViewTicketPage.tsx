@@ -1,6 +1,6 @@
 import { IoArrowBackCircle } from "react-icons/io5";
-import Messages from "../components/ticket/Messages";
-import MessageInput from "@/components/ticket/MessageInput";
+import Messages from "../../components/tickets/Messages";
+import MessageInput from "@/components/tickets/MessageInput";
 import { Link } from "react-router-dom";
 
 const ViewTicketPage = () => {

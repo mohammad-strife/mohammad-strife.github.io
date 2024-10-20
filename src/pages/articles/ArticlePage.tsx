@@ -1,4 +1,4 @@
-import share from "../assets/images/share.png";
+import share from "@/assets/images/share.png";
 import saftCo from "@/assets/images/main-logo.png";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";

@@ -1,9 +1,9 @@
-import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCredentials } from "@/app/slices/authSlice";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import axios from "@/api/axios";
+import { setCredentials } from "@/app/slices/authSlice";
 import {
   InputOTP,
   InputOTPGroup,
@@ -12,13 +12,11 @@ import {
 import { toast } from "react-toastify";
 import { FiClock } from "react-icons/fi";
 
-const OtpForm = () => {
+const OtpForm = ({ mobile }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [otp, setOtp] = useState("");
-  const [message, setMessage] = useState("");
-  const [code, setCode] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [otpCode, setOtpCode] = useState("");
+  const [timeLeft, setTimeLeft] = useState(120);
 
   useEffect(() => {
     if (timeLeft === 0) return;
@@ -40,23 +38,24 @@ const OtpForm = () => {
 
   const otpForm = async () => {
     try {
-      if (otp.length == 4) {
+      if (otpCode.length == 4) {
+        const data = { code: otpCode, mobile };
+        console.log(JSON.stringify(data));
         const response = await axios.post(
-          "/verify_sms",
-          JSON.stringify({ otp }),
+          "/verify_sms_code",
+          JSON.stringify(data),
           {
             headers: { "Content-Type": "application/json" },
           }
         );
         console.log({ ...response }, "response");
         dispatch(setCredentials({ ...response }));
-        setMessage("کد وارد شده صحیح می باشد");
-        setCode(true);
+        toast.success("ورود با موفقیت انجام شد");
       } else {
-        throw new Error();
+        toast.error("کد وارد شده باید 4 رقم باشد");
       }
     } catch (err: any) {
-      setMessage("کد وارد شده اشتباه است");
+      console.log(err);
       toast.error("کد وارد شده اشتباه است");
     }
   };
@@ -67,24 +66,17 @@ const OtpForm = () => {
         <DialogTitle className="text-center text-4xl font-light mt-20 mb-14">
           کد تایید
         </DialogTitle>
-        <DialogTitle className="text-right font-light">
-          کد ارسال شده به شماره {"0919076323"} را وارد کنید
-        </DialogTitle>
-        <DialogTitle
-          className={
-            code ? "text-green-500 text-right" : "text-red-500 text-right"
-          }
-        >
-          {message}
+        <DialogTitle className="font-light">
+          کد تایید برای شماره {mobile} پیامک شده است
         </DialogTitle>
       </DialogHeader>
       <InputOTP
         onChange={(e) => {
-          setOtp(e);
+          setOtpCode(e);
         }}
         maxLength={4}
       >
-        <InputOTPGroup className="mx-auto gap-2" id="otp">
+        <InputOTPGroup className="mx-auto gap-2" id="otp" dir="ltr">
           <InputOTPGroup>
             <InputOTPSlot index={0} />
           </InputOTPGroup>
@@ -99,20 +91,26 @@ const OtpForm = () => {
           </InputOTPGroup>
         </InputOTPGroup>
       </InputOTP>
-      <div className="flex justify-end items-center gap-1 px-16">
-        <span className="mb-1">
+      <div className="flex items-center gap-1 px-16">
+        {timeLeft ? (
+          <>
+            <FiClock className="text-clock" />
+            <small>{timeLeft || ""}</small>
+          </>
+        ) : (
+          <button>ارسال مجدد پیامک</button>
+        )}
+        <small className="mb-1">
           {timeLeft ? "ثانیه تا دریافت مجدد کد" : "ارسال مجدد کد"}
-        </span>
-        <span>{timeLeft || ""}</span>
-        <FiClock className="text-clock" />
+        </small>
       </div>
       <button
         id="nextStep"
         type="submit"
-        className="bg-btnOrange rounded-lg p-2 m-auto w-1/2 mt-10"
+        className="bg-btnOrange rounded-lg p-2 m-auto w-1/2 mt-10 text-white"
         onClick={otpForm}
       >
-        ادامه
+        تایید
       </button>
 
       <small className="mb-10 mt-5 text-center underline">

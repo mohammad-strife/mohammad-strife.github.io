@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
         <div className="col-span-6 text-left md:hidden order-2">
           <p className="text-bgNav md:text-xl">شبکه های اجتماعی ما :</p>
-          <div className="flex gap-5 mt-4 text-white" dir="ltr">
+          <div className="flex justify-end gap-5 mt-4 text-white">
             <FaInstagram className="size-8" />
             <FaTelegram className="size-8" />
             <FaLinkedin className="size-8" />

@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-black bg-btnOrange",
+        default: "text-black bg-background",
       },
       size: {
         default: "h-10 px-4 py-2",

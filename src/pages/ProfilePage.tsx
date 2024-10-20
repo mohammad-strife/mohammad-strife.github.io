@@ -29,7 +29,7 @@ const ProfilePage = () => {
         صفحه اصلی پروفایل کاربری
       </p>
       <div className="mt-16 flex justify-center">
-        <Card className="w-[340px]">
+        <Card className="w-[340px] bg-profile_card">
           <CardHeader>
             <img src={profileImg} alt="" className="size-16 mx-auto" />
             <p className="text-center text-white">محمد زارعی</p>

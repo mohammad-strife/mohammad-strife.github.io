@@ -8,14 +8,15 @@ import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
-import NewTicketPage from "./pages/NewTicketPage";
-import MyTicketsPage from "./pages/MyTicketsPage";
-import ViewTicketPage from "./pages/ViewTicketPage";
-import ArticlesPage from "./pages/ArticlesPage";
-import ArticlePage from "./pages/ArticlePage";
+import NewTicketPage from "./pages/tickets/NewTicketPage";
+import MyTicketsPage from "./pages/tickets/MyTicketsPage";
+import ViewTicketPage from "./pages/tickets/ViewTicketPage";
+import ArticlesPage from "./pages/articles/ArticlesPage";
+import ArticlePage from "./pages/articles/ArticlePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import NewExperience from "./pages/NewExperience";
-import PublishArticle from "./pages/PublishArticle";
+import NewExperience from "./pages/articles/NewExperience";
+import PublishArticle from "./pages/articles/PublishArticle";
+import MyPublishedArticles from "./pages/articles/MyPublishedArticles";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/article/:id" element={<ArticlePage />} />
           <Route path="/new-experience" element={<NewExperience />} />
           <Route path="/publish-article" element={<PublishArticle />} />
+          <Route path="/published-article" element={<MyPublishedArticles />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Route>

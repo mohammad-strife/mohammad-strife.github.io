@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
+  daisyui: {
+    themes: ["light"],
+  },
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
@@ -77,7 +80,7 @@ export default {
         inputBorder: "rgba(121, 121, 121, 1)",
         clock: "rgba(255, 143, 0, 1)",
         footer: "rgba(14, 69, 58, 1)",
-        profile: "rgba(3, 201, 201, 1)",
+        profile_card: "rgba(3, 201, 201, 1)",
         bgTicket: "rgba(157, 218, 249, 1)",
         inputTicket: "rgba(183, 183, 183, 1)",
         detailsTicket: "rgba(8, 101, 197, 1)",
@@ -86,7 +89,8 @@ export default {
         arrow: "rgba(6, 152, 255, 1)",
         bgFilter: "rgba(0, 160, 163, 1)",
         hoverMenu: "rgba(157, 218, 249, 1)",
-        greenBlack:"rgba(4, 124, 129, 1)"
+        greenBlack: "rgba(4, 124, 129, 1)",
+        MyArticles: "rgba(4, 124, 129, 1)",
       },
     },
   },
