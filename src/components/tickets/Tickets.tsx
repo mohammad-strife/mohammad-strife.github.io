@@ -3,14 +3,17 @@ import Ticket from "./Ticket";
 import Spinner from "../Spinner";
 
 const Tickets = () => {
-  const { loading, tickets } = useGetTickets();
+  const { loading, ticket }: any = useGetTickets();
+  console.log(ticket);
   return (
     <>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
         <div className="h-screen">
-          <Ticket />
+          {ticket.map((ticket: any) => (
+            <Ticket key={ticket.id} ticket={ticket} />
+          ))}
         </div>
       )}
     </>

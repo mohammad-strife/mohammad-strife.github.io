@@ -3,7 +3,7 @@ import saftCo from "@/assets/images/main-logo.png";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
 import article from "@/assets/images/footer-image.png";
-import ArticleData from "@/components/articles/ArticleData";
+// import ArticleData from "@/components/articles/ArticleData";
 
 const ArticlePage = () => {
   return (
@@ -59,9 +59,7 @@ const ArticlePage = () => {
       </div>
       <div className="grid grid-cols-10">
         <img src={article} alt="" className="col-span-10 rounded-md" />
-        <div className="col-span-12">
-          <ArticleData />
-        </div>
+        <div className="col-span-12">{/* <ArticleData /> */}</div>
       </div>
     </section>
   );

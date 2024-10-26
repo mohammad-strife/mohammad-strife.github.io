@@ -1,12 +1,13 @@
+
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { FiSearch } from "react-icons/fi";
 import SelectedArticles from "@/components/articles/SelectedArticles";
-import NewArticles from "@/components/articles/NewArticles";
+import ArticleListings from "@/components/articles/ArticleListings";
 
 const ArticlesPage = () => {
   return (
-    <section className="container mx-auto">
+    <section className="container mx-auto my-20">
       {/* Hero Section */}
       <section className="grid grid-cols-12 mx-auto text-white">
         <div className="col-span-12 md:col-span-5 my-20">
@@ -76,8 +77,7 @@ const ArticlesPage = () => {
       {/* pupolar articles */}
       <SelectedArticles />
 
-      {/* new articles */}
-      <NewArticles />
+      <ArticleListings />
     </section>
   );
 };

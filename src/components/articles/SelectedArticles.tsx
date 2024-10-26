@@ -14,7 +14,9 @@ const SelectedArticles = () => {
           <span className="absolute bottom-10 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
-          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+          <Link to="" className="absolute left-6 bottom-6 underline">
+            ادامه مطلب
+          </Link>
         </div>
         <div className="col-span-5 p-3 relative">
           <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md">
@@ -24,7 +26,9 @@ const SelectedArticles = () => {
           <span className="absolute bottom-10 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
-          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+          <Link to="" className="absolute left-6 bottom-6 underline">
+            ادامه مطلب
+          </Link>
         </div>
 
         <div className="col-span-4 p-4 relative">
@@ -35,7 +39,9 @@ const SelectedArticles = () => {
           <span className="absolute bottom-10 right-6">
             شب در یزد کجا برویم
           </span>
-          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+          <Link to="" className="absolute left-6 bottom-6 underline">
+            ادامه مطلب
+          </Link>
         </div>
 
         <div className="col-span-4 p-4 relative">
@@ -46,7 +52,9 @@ const SelectedArticles = () => {
           <span className="absolute bottom-10 right-6">
             شب در یزد کجا برویم
           </span>
-          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+          <Link to="" className="absolute left-6 bottom-6 underline">
+            ادامه مطلب
+          </Link>
         </div>
 
         <div className="col-span-4 p-4 relative">
@@ -57,7 +65,9 @@ const SelectedArticles = () => {
           <span className="absolute bottom-10 right-6">
             شب در یزد کجا برویم
           </span>
-          <Link to="" className="absolute left-6 bottom-6 underline">ادامه مطلب</Link>
+          <Link to="" className="absolute left-6 bottom-6 underline">
+            ادامه مطلب
+          </Link>
         </div>
       </div>
     </section>

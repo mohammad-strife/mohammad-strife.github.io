@@ -1,4 +1,4 @@
-import Article from "./Article";
+import Article from "./PublishingArticle";
 
 const Articles = () => {
   return (

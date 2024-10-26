@@ -11,12 +11,12 @@ import PrivateRoute from "./components/PrivateRoute";
 import NewTicketPage from "./pages/tickets/NewTicketPage";
 import MyTicketsPage from "./pages/tickets/MyTicketsPage";
 import ViewTicketPage from "./pages/tickets/ViewTicketPage";
-import ArticlesPage from "./pages/articles/ArticlesPage";
 import ArticlePage from "./pages/articles/ArticlePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NewExperience from "./pages/articles/NewExperience";
 import PublishArticle from "./pages/articles/PublishArticle";
 import MyPublishedArticles from "./pages/articles/MyPublishedArticles";
+import ArticlesPage from "./pages/articles/ArticlesPage";
 
 const App = () => {
   const router = createBrowserRouter(

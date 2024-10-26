@@ -22,7 +22,7 @@ const MainForm = () => {
         {(step == "Register" && (
           <SignupForm setStep={setStep} setMobile={setMobile} />
         )) ||
-          (step == "Otp" && <OtpForm mobile={mobile} />)}
+          (step == "Otp" && <OtpForm mobile={mobile} setStep={setStep} />)}
       </DialogContent>
     </Dialog>
   );

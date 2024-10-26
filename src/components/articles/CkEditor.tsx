@@ -7,13 +7,12 @@ const CkEditor = ({ setEditorData }: any) => {
     <div>
       <CKEditor
         editor={ClassicEditor}
-        onChange={(event, editor) => {
+        onChange={(event, editor:any) => {
           const data = editor.getData();
           setEditorData(data);
-          console.log({ event, editor, data });
+          // console.log({ event, editor, data });
         }}
       />
-      {/* <div>{editorData}</div> */}
     </div>
   );
 };

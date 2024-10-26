@@ -4,7 +4,9 @@ import Tickets from "../../components/tickets/Tickets";
 import { GoPlusCircle } from "react-icons/go";
 import { Link } from "react-router-dom";
 
+
 const MyTicketsPage = () => {
+  
   return (
     <div className="w-[934px] mx-auto bg-bgTicket my-10 rounded-md">
       <div className="grid grid-cols-12 p-3 border-b-2 border-gray-400">
@@ -37,7 +39,6 @@ const MyTicketsPage = () => {
             </Link>
           </button>
         </div>
-
         <Tickets />
       </div>
     </div>

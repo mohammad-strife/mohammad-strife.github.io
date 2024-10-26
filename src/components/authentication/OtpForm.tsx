@@ -12,7 +12,7 @@ import {
 import { toast } from "react-toastify";
 import { FiClock } from "react-icons/fi";
 
-const OtpForm = ({ mobile }: any) => {
+const OtpForm = ({ mobile, setStep }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [otpCode, setOtpCode] = useState("");
@@ -40,7 +40,6 @@ const OtpForm = ({ mobile }: any) => {
     try {
       if (otpCode.length == 4) {
         const data = { code: otpCode, mobile };
-        console.log(JSON.stringify(data));
         const response = await axios.post(
           "/verify_sms_code",
           JSON.stringify(data),
@@ -48,8 +47,8 @@ const OtpForm = ({ mobile }: any) => {
             headers: { "Content-Type": "application/json" },
           }
         );
-        console.log({ ...response }, "response");
-        dispatch(setCredentials({ ...response }));
+
+        dispatch(setCredentials({ ...response.data.data }));
         toast.success("ورود با موفقیت انجام شد");
       } else {
         toast.error("کد وارد شده باید 4 رقم باشد");
@@ -57,6 +56,17 @@ const OtpForm = ({ mobile }: any) => {
     } catch (err: any) {
       console.log(err);
       toast.error("کد وارد شده اشتباه است");
+    }
+  };
+  const sendSms = async () => {
+    try {
+      const data = { code: otpCode, mobile };
+      await axios.post("/send_sms", JSON.stringify(data), {
+        headers: { "Content-Type": "application/json" },
+      });
+      setTimeLeft(120);
+    } catch (error) {
+      console.log({ message: "لطفا دقایقی بعد امتحان کنید" });
     }
   };
 
@@ -98,10 +108,12 @@ const OtpForm = ({ mobile }: any) => {
             <small>{timeLeft || ""}</small>
           </>
         ) : (
-          <button>ارسال مجدد پیامک</button>
+          <button type="button" onClick={() => sendSms()}>
+            ارسال مجدد پیامک
+          </button>
         )}
         <small className="mb-1">
-          {timeLeft ? "ثانیه تا دریافت مجدد کد" : "ارسال مجدد کد"}
+          {timeLeft ? "ثانیه تا دریافت مجدد کد" : ""}
         </small>
       </div>
       <button
@@ -114,7 +126,7 @@ const OtpForm = ({ mobile }: any) => {
       </button>
 
       <small className="mb-10 mt-5 text-center underline">
-        ویرایش شماره موبایل
+        <button type="button" onClick={() => setStep("Register")}>ویرایش شماره موبایل</button>
       </small>
     </>
   );

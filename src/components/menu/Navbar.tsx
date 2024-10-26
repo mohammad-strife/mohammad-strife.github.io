@@ -9,13 +9,13 @@ const Navbar = () => {
   const { userInfo } = useSelector((state: any) => state.auth);
 
   return (
-    <nav className="container mx-auto mb-10 px-2 md:px-0  ">
+    <nav className="container mx-auto mb-10 px-2 md:px-0">
       <div className="flex items-center justify-center gap-4 pt-5">
-        <Link to="/">
+        <Link to="/" className="hidden md:block">
           <img src={safarImg} className="w-20" alt="" />
         </Link>
         <div
-          className={`flex items-center p-4  rounded-lg gap-20 w-full justify-between border-blue-300 border-2 ${
+          className={`flex items-center p-3 md:p-5 rounded-lg gap-20 w-full justify-between border-blue-300 border-2 ${
             userInfo ? `bg-white` : `bg-bgNav`
           }`}
         >
@@ -33,6 +33,9 @@ const Navbar = () => {
           <div className="block md:hidden text-black">
             <Offcanvans />
           </div>
+          <Link to="/" className="block md:hidden pr-8 md:pr-0">
+            <img src={safarImg} className="w-12" alt="" />
+          </Link>
           <div className="flex gap-3">
             <div className="flex items-center">
               {userInfo ? (
@@ -50,7 +53,7 @@ const Navbar = () => {
             </div>
             <NavLink
               to=""
-              className="bg-btnApp rounded-md px-2 py-1 text-center hidden md:block"
+              className="bg-btnApp rounded-md px-2 py-1 text-center hidden md:block text-white"
             >
               دانلود اپلیکیشن
             </NavLink>

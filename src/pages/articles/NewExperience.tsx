@@ -1,29 +1,51 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import linkedin from "@/assets/images/LinkedIn_icon_circle.svg.png";
-import { IoClose } from "react-icons/io5";
-import { IoMenu } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import banana from "@/assets/videos/banana.mp4";
 import axios from "@/api/axios";
-import { IoDocumentTextOutline, IoDocumentText } from "react-icons/io5";
-import { IoCheckmarkCircleOutline, IoCheckmarkCircle } from "react-icons/io5";
-import { BsBarChartLine, BsBarChartLineFill } from "react-icons/bs";
-import { IoHeartCircleOutline, IoHeartCircleSharp } from "react-icons/io5";
-import { IoBookmarksOutline, IoBookmarks } from "react-icons/io5";
-import { RiMedalLine, RiMedalFill } from "react-icons/ri";
+
 import CkEditor from "@/components/articles/CkEditor";
+import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSelector } from "react-redux";
+import ArticleMenu from "@/components/menu/ArticleMenu";
+
+const ArticleSchema = z.object({
+  title: z.string().min(4, {
+    message: "عنوان حداقل باید ۴ کارکتر باشد",
+  }),
+  body: z.any(),
+});
+
+type ArticleForm = z.infer<typeof ArticleSchema>;
 
 const NewExperience = () => {
   const [editorData, setEditorData] = useState("");
+  const { userInfo } = useSelector((state: any) => state.auth);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ArticleForm>({
+    resolver: zodResolver(ArticleSchema),
+  });
 
   const navigate = useNavigate();
-  const onSubmit = async (e: any) => {
+  const onSubmit: SubmitHandler<ArticleForm> = async (data: any) => {
+    console.log({ ...data, body: editorData });
     try {
-      e.prevetDefault();
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post("", JSON.stringify(editorData), {
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await axios.post(
+        "/article",
+        JSON.stringify({ ...data, body: editorData }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
 
       console.log(response);
 
@@ -32,127 +54,11 @@ const NewExperience = () => {
       console.log(error);
     }
   };
-  const [isOpen, setIsOpen] = useState(true);
-  const showTitle = isOpen ? "block" : "hidden";
+
   return (
     <section className="container mx-auto my-5">
       <div className="grid grid-cols-12">
-        <div className="col-span-12 md:col-span-3 relative p-2">
-          <div
-            className={`shadow-3xl flex flex-col rounded-lg p-2 ${
-              isOpen ? "w-full" : "w-[65px]"
-            }`}
-          >
-            <div
-              className={`border-b-2 pb-4 ${
-                isOpen
-                  ? "border-white"
-                  : "border-gray-400 text-center duration-1000 delay-500"
-              }`}
-            >
-              <button
-                type="button"
-                onClick={() => setIsOpen((prevState) => !prevState)}
-              >
-                {isOpen ? (
-                  <IoClose className="size-7 border p-1 border-black rounded-lg" />
-                ) : (
-                  <IoMenu className="size-7" />
-                )}
-              </button>
-              <img
-                src={linkedin}
-                alt=""
-                className={`mx-auto ${
-                  isOpen ? "size-20 my-2" : `size-10 my-1`
-                }`}
-              />
-              <p className={`text-center ${showTitle}`}>محمد زارعی</p>
-            </div>
-            <div
-              id="list_icons"
-              className={`space-y-4 text-gray-500 pt-4 ${
-                isOpen ? "" : "mx-auto"
-              }`}
-            >
-              <Link
-                id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <IoDocumentTextOutline id="outline_icons" className="size-7" />
-                <IoDocumentText
-                  id="fill_icons"
-                  className="hidden size-7 text-blue-700"
-                />
-                <span className={showTitle}>نوشتن تجربه سفر جدید</span>
-              </Link>
-              <Link
-                id="link_tag"
-                to="/published-article"
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <IoCheckmarkCircleOutline
-                  id="outline_icons"
-                  className="size-7"
-                />
-                <IoCheckmarkCircle
-                  id="fill_icons"
-                  className="hidden size-7 text-greenBlack"
-                />
-                <span className={showTitle}>تجربیات منتشر شده</span>
-              </Link>
-              <Link
-                id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <BsBarChartLine id="outline_icons" className="size-7" />
-                <BsBarChartLineFill
-                  id="fill_icons"
-                  className="hidden size-7 text-btnOrange"
-                />
-                <span className={showTitle}>آمار بازدید مقاله ها</span>
-              </Link>
-              <Link
-                id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <IoHeartCircleOutline id="outline_icons" className="size-7" />
-                <IoHeartCircleSharp
-                  id="fill_icons"
-                  className="hidden size-7 text-red-500"
-                />
-                <span className={showTitle}>سفرهای پیشنهادی</span>
-              </Link>
-              <Link
-                id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <IoBookmarksOutline id="outline_icons" className="size-7" />
-                <IoBookmarks
-                  id="fill_icons"
-                  className="hidden size-7 text-slate-800"
-                />
-                <span className={showTitle}>مقالات ذخیره شده من</span>
-              </Link>
-              <Link
-                id="link_tag"
-                to=""
-                className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-              >
-                <RiMedalLine id="outline_icons" className="size-7" />
-                <RiMedalFill
-                  id="fill_icons"
-                  className="hidden size-7 text-sky-500"
-                />
-                <span className={showTitle}> امتیازات من</span>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <ArticleMenu />
         <div className="col-span-12 md:col-span-9 p-2">
           <video controls className="rounded-xl">
             <source src={banana} type="video/mp4" />
@@ -172,7 +78,10 @@ const NewExperience = () => {
         </p>
       </div>
 
-      <form onSubmit={onSubmit} className="grid grid-cols-12 gap-10 my-10">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid grid-cols-12 gap-10 my-10"
+      >
         <div className="col-span-12 flex flex-col">
           <label htmlFor="titleArticle">عنوان مقاله</label>
           <input
@@ -180,10 +89,15 @@ const NewExperience = () => {
             placeholder="عنوان"
             id="titleArticle"
             className="w-1/3 rounded-md bg-stone-300 text-black p-2"
+            {...register("title")}
           />
+          {errors.title && (
+            <div className="text-right">{errors.title.message}</div>
+          )}
         </div>
         <div className="col-span-12 space-y-10">
-          <CkEditor setEditorData={setEditorData} />
+          <CkEditor setEditorData={setEditorData} {...register("body")} />
+
           <div className="text-left">
             <button
               type="button"
