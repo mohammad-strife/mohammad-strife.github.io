@@ -34,7 +34,8 @@ type ProfileForm = z.infer<typeof ProfileSchema>;
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile]: any = useState({});
-  const [picture, setPicture]: any = useState();
+  const [url, setUrl]: any = useState();
+  const [file, setFile]: any = useState();
   const [isComplete, setIsComplete] = useState({});
   const { userInfo } = useSelector((state: any) => state.auth);
   const {
@@ -66,9 +67,11 @@ const ProfilePage = () => {
 
   const onSubmit: SubmitHandler<ProfileForm> = async (data) => {
     try {
+      const upload_file = file.get("upload_file");
+      console.log({ ...data, upload_file, url });
       const result = await axios.post(
         "/update_profile",
-        JSON.stringify({ ...data, ...picture }),
+        JSON.stringify({ ...data, file, url }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -85,61 +88,63 @@ const ProfilePage = () => {
   return (
     <section className="container mx-auto mb-32 ">
       <p className="text-gray-500 mb-16 px-3">صفحه اصلی پروفایل کاربری</p>
-      <div className="relative right-0 hidden md:block">
-        <ProfileMenu />
-      </div>
-      <div className="flex justify-center">
-        <Card className="w-[340px] bg-profile_card">
-          <CardHeader className="mx-auto w-full">
-            <MobileProfileMenu />
-            <ImageUploader setPicture={setPicture} />
+      <div className="grid grid-cols-12">
+        <div className=" hidden md:block md:col-span-3">
+          <ProfileMenu />
+        </div>
+        <div className="col-span-12 md:col-span-7 flex justify-center">
+          <Card className="w-[340px] bg-profile_card">
+            <CardHeader className="mx-auto w-full">
+              <MobileProfileMenu />
+              <ImageUploader setFile={setFile} setUrl={setUrl} />
 
-            <p className="text-center text-white">{userProfile.name}</p>
-          </CardHeader>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <CardContent>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="username" className="text-white">
-                    نام و نام خانوادگی
-                  </Label>
-                  <Input
-                    id="username"
-                    placeholder="نام و نام خانوادگی خود را وارد کنید"
-                    {...register("name")}
-                    defaultValue={userProfile.name}
-                  />
-                  {errors.name && (
-                    <div className="text-right">{errors.name.message}</div>
-                  )}
+              <p className="text-center text-white">{userProfile.name}</p>
+            </CardHeader>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <CardContent>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="username" className="text-white">
+                      نام و نام خانوادگی
+                    </Label>
+                    <Input
+                      id="username"
+                      placeholder="نام و نام خانوادگی خود را وارد کنید"
+                      {...register("name")}
+                      defaultValue={userProfile.name}
+                    />
+                    {errors.name && (
+                      <div className="text-right">{errors.name.message}</div>
+                    )}
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="cellphone" className="text-white">
+                      شماره موبایل
+                    </Label>
+                    <Input
+                      id="cellphone"
+                      defaultValue={userProfile.mobile}
+                      {...register("mobile")}
+                    />
+                    {errors.mobile && (
+                      <div className="text-right">{errors.mobile.message}</div>
+                    )}
+                  </div>
                 </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="cellphone" className="text-white">
-                    شماره موبایل
-                  </Label>
-                  <Input
-                    id="cellphone"
-                    defaultValue={userProfile.mobile}
-                    {...register("mobile")}
-                  />
-                  {errors.mobile && (
-                    <div className="text-right">{errors.mobile.message}</div>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-around">
-              <Button
-                className="w-24 bg-btnOrange"
-                disabled={isSubmitting}
-                type="submit"
-              >
-                {isSubmitting ? "در حال ثبت" : "ذخیره تغییرات"}
-              </Button>
-              <Button className="bg-gray-400 w-24">انصراف</Button>
-            </CardFooter>
-          </form>
-        </Card>
+              </CardContent>
+              <CardFooter className="flex justify-around">
+                <Button
+                  className="w-24 bg-btnOrange"
+                  disabled={isSubmitting}
+                  type="submit"
+                >
+                  {isSubmitting ? "در حال ثبت" : "ذخیره تغییرات"}
+                </Button>
+                <Button className="bg-gray-400 w-24">انصراف</Button>
+              </CardFooter>
+            </form>
+          </Card>
+        </div>
       </div>
     </section>
   );

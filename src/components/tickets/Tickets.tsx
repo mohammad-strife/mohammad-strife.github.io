@@ -10,7 +10,7 @@ const Tickets = () => {
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <div className="h-screen">
+        <div className="h-screen min-w-[500px]">
           {ticket.map((ticket: any) => (
             <Ticket key={ticket.id} ticket={ticket} />
           ))}

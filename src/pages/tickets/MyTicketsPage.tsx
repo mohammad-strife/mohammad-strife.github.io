@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MyTicketsPage = () => {
   
   return (
-    <div className="w-[934px] mx-auto bg-bgTicket my-10 rounded-md">
+    <div className="container mx-auto bg-bgTicket mb-10 rounded-md">
       <div className="grid grid-cols-12 p-3 border-b-2 border-gray-400">
         <div className="text-right col-span-5 ">
           <p className="text-3xl my-2">تیکت های من</p>

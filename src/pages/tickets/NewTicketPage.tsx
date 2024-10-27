@@ -62,8 +62,8 @@ const NewTicketPage = () => {
     }
   };
   return (
-    <section className="container mx-auto px-2">
-      <div className="w-full mx-auto bg-bgTicket rounded-lg my-20">
+    <section className="container mx-auto">
+      <div className="w-full mx-auto bg-bgTicket rounded-lg mb-20">
         <div className="grid grid-cols-12 p-3 border-b-2 border-gray-400">
           <div className="text-right col-span-10 md:col-span-4">
             <p className="text-2xl">ایجاد تیکت</p>
