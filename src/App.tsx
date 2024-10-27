@@ -17,6 +17,7 @@ import NewExperience from "./pages/articles/NewExperience";
 import PublishArticle from "./pages/articles/PublishArticle";
 import MyPublishedArticles from "./pages/articles/MyPublishedArticles";
 import ArticlesPage from "./pages/articles/ArticlesPage";
+import TicketLayout from "./layouts/TicketLayout";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -26,10 +27,12 @@ const App = () => {
         {/* Private Routes */}
         <Route path="" element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/my-tickets">
-            <Route index element={<MyTicketsPage />} />
-            <Route path="new-ticket" element={<NewTicketPage />} />
-            <Route path="view-ticket/:id" element={<ViewTicketPage />} />
+          <Route element={<TicketLayout />}>
+            <Route path="/my-tickets">
+              <Route index element={<MyTicketsPage />} />
+              <Route path="new-ticket" element={<NewTicketPage />} />
+              <Route path="view-ticket/:id" element={<ViewTicketPage />} />
+            </Route>
           </Route>
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/article/:id" element={<ArticlePage />} />

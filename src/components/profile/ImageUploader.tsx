@@ -3,9 +3,10 @@ import axios from "@/api/axios";
 import { FcAddImage } from "react-icons/fc";
 import { useSelector } from "react-redux";
 
-const ImageUploader: React.FC<{ setPicture: (picture: any) => void }> = ({
-  setPicture,
-}) => {
+const ImageUploader: React.FC<{
+  setUrl: (url: any) => void;
+  setFile: (file: any) => void;
+}> = ({ setFile, setUrl }) => {
   const [image, setImage] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { userInfo } = useSelector((state: any) => state.auth);
@@ -15,7 +16,7 @@ const ImageUploader: React.FC<{ setPicture: (picture: any) => void }> = ({
 
     const formData = new FormData();
     formData.append("upload_file", selectedFile);
-    console.log(formData.get("upload_file"));
+    // console.log(...formData);
 
     try {
       const result = await axios.post("/temp_media", formData, {
@@ -24,9 +25,11 @@ const ImageUploader: React.FC<{ setPicture: (picture: any) => void }> = ({
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      console.log(result.data);
-      setPicture(result.data);
-      alert("Image uploaded successfully");
+      const file_path = result.data.file_path;
+
+      setUrl(file_path);
+      setFile(formData);
+      // alert("Image uploaded successfully");
     } catch (error) {
       console.error("Error uploading image:", error);
     }
