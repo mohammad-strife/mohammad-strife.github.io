@@ -3,6 +3,7 @@ import Spinner from "../Spinner";
 import axios from "@/api/axios";
 import ArticleListing from "./ArticleListing";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ArticleListings = () => {
   const [articles, setArticles] = useState([]);
@@ -37,11 +38,15 @@ const ArticleListings = () => {
       ) : (
         <>
           <p className="text-right mb-10">مقالات جدید این ماه</p>
-          <div className="grid grid-cols-12 gap-4">
-            {articles.map((article: any) => (
+          {/* {articles.map((article: any) => (
               <ArticleListing key={article.id} article={article} />
-            ))}
-          </div>
+              ))} */}
+          <Link to="" className="">
+            <ArticleListing />
+          </Link>
+          <ArticleListing />
+          <ArticleListing />
+          <ArticleListing />
         </>
       )}
     </section>

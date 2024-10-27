@@ -6,8 +6,8 @@ const SelectedArticles = () => {
     <section className="my-20">
       <p className="text-3xl mb-10">مقالات منتخب این ماه</p>
       <div className="grid grid-cols-12 text-white">
-        <div className="col-span-5 col-start-2 p-3 relative">
-          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md">
+        <div className="col-span-5 col-start-2 p-2 relative">
+          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
@@ -18,8 +18,8 @@ const SelectedArticles = () => {
             ادامه مطلب
           </Link>
         </div>
-        <div className="col-span-5 p-3 relative">
-          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md">
+        <div className="col-span-5 p-2 relative">
+          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
@@ -31,8 +31,8 @@ const SelectedArticles = () => {
           </Link>
         </div>
 
-        <div className="col-span-4 p-4 relative">
-          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+        <div className="col-span-4 p-2 relative">
+          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
@@ -44,8 +44,8 @@ const SelectedArticles = () => {
           </Link>
         </div>
 
-        <div className="col-span-4 p-4 relative">
-          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+        <div className="col-span-4 p-2 relative">
+          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
@@ -57,8 +57,8 @@ const SelectedArticles = () => {
           </Link>
         </div>
 
-        <div className="col-span-4 p-4 relative">
-          <span className="absolute left-6 top-6 bg-btnOrange p-2 rounded-md text-sm">
+        <div className="col-span-4 p-2 relative">
+          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
