@@ -3,17 +3,23 @@ import Ticket from "./Ticket";
 import Spinner from "../Spinner";
 
 const Tickets = () => {
-  const { loading, ticket }: any = useGetTickets();
-  console.log(ticket);
+  const { loading, tickets }: any = useGetTickets();
+
   return (
     <>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
         <div className="h-screen min-w-[500px]">
-          {ticket.map((ticket: any) => (
-            <Ticket key={ticket.id} ticket={ticket} />
-          ))}
+          {tickets && Array.isArray(tickets) && tickets.length > 0 ? (
+            tickets.map((ticket: any) => (
+              <Ticket key={ticket.id} ticket={ticket} />
+            ))
+          ) : (
+            <p className="flex items-center h-full justify-center animate-pulse text-2xl">
+              تیکتی برای نمایش وجود نداره
+            </p>
+          )}
         </div>
       )}
     </>
