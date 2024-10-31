@@ -9,14 +9,15 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { toast } from "react-toastify";
 import { FiClock } from "react-icons/fi";
+import { useToast } from "@/hooks/use-toast";
 
 const OtpForm = ({ mobile, setStep }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [otpCode, setOtpCode] = useState("");
   const [timeLeft, setTimeLeft] = useState(120);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (timeLeft === 0) return;
@@ -49,13 +50,19 @@ const OtpForm = ({ mobile, setStep }: any) => {
         );
 
         dispatch(setCredentials({ ...response.data.data }));
-        toast.success("ورود با موفقیت انجام شد");
+        toast({
+          description: "ورورد با موفقیت انجام شد",
+        });
       } else {
-        toast.error("کد وارد شده باید 4 رقم باشد");
+        toast({
+          description: "کد وارد شده باید 4 رقم باشد",
+        });
       }
     } catch (err: any) {
       console.log(err);
-      toast.error("کد وارد شده اشتباه است");
+      toast({
+        description: "کد واردکد وارد شده اشتباه است",
+      });
     }
   };
   const sendSms = async () => {
@@ -126,7 +133,9 @@ const OtpForm = ({ mobile, setStep }: any) => {
       </button>
 
       <small className="mb-10 mt-5 text-center underline">
-        <button type="button" onClick={() => setStep("Register")}>ویرایش شماره موبایل</button>
+        <button type="button" onClick={() => setStep("Register")}>
+          ویرایش شماره موبایل
+        </button>
       </small>
     </>
   );

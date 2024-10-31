@@ -15,8 +15,8 @@ import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import MobileProfileMenu from "@/components/menu/MobileProfileMenu";
-import { toast } from "react-toastify";
 import ImageUploader from "@/components/profile/ImageUploader";
+import { useToast } from "@/hooks/use-toast";
 
 const ProfileSchema = z.object({
   name: z.string().min(4, {
@@ -34,9 +34,11 @@ type ProfileForm = z.infer<typeof ProfileSchema>;
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile]: any = useState({});
+  const [image, setImage]: any = useState<string | null>(null);
   const [url, setUrl]: any = useState();
   const [file, setFile]: any = useState();
   const [isComplete, setIsComplete] = useState({});
+  const { toast } = useToast();
   const { userInfo } = useSelector((state: any) => state.auth);
   const {
     register,
@@ -55,11 +57,17 @@ const ProfilePage = () => {
         console.log(result);
         const profile = result.data.data.user;
         if (!profile.name) {
-          toast.warning("لطفا پروفایل خود را تکمیل کنید");
+          toast({ description: "لطفا پروفایل خود را تکمیل کنید" });
         }
+        console.log(result.data.data.user.photo);
+        setImage(result.data.data.user.photo);
         setUserProfile(result.data.data.user);
       } catch (error) {
         console.log(error);
+        toast({
+          variant: "destructive",
+          description: "مشکلی در دریافت اطلاعات پیش آمده",
+        });
       }
     };
     fetchUser();
@@ -67,21 +75,21 @@ const ProfilePage = () => {
 
   const onSubmit: SubmitHandler<ProfileForm> = async (data) => {
     try {
-      const upload_file = file.get("upload_file");
-      console.log({ ...data, upload_file, url });
-      const result = await axios.post(
-        "/update_profile",
-        JSON.stringify({ ...data, file, url }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-      );
+      file.append("file_path", url);
+      file.append("mobile", data.mobile);
+      file.append("name", data.name);
+
+      console.log(file);
+      const result = await axios.post("/update_profile", file, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      toast({ description: "اطلاعات شما با موفقیت بروز شد" });
       console.log(result);
     } catch (error) {
-      console.log({ message: "لطفا دقایقی بعد امتحان کنید" });
+      toast({ description: "مشکلی در ثبت اطلاعات پیش آمده" });
     }
   };
 
@@ -96,7 +104,12 @@ const ProfilePage = () => {
           <Card className="w-[340px] bg-profile_card">
             <CardHeader className="mx-auto w-full">
               <MobileProfileMenu />
-              <ImageUploader setFile={setFile} setUrl={setUrl} />
+              <ImageUploader
+                setFile={setFile}
+                setUrl={setUrl}
+                image={image}
+                setImage={setImage}
+              />
 
               <p className="text-center text-white">{userProfile.name}</p>
             </CardHeader>

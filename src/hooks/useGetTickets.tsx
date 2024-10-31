@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "@/api/axios";
+import { useToast } from "./use-toast";
 
 const useGetTickets = () => {
   const [loading, setLoading] = useState(true);
-  const [ticket, setTicket] = useState(null);
+  const [tickets, setTickets] = useState();
+  const { toast } = useToast();
 
   const { userInfo } = useSelector((state: any) => state.auth);
 
@@ -18,25 +20,18 @@ const useGetTickets = () => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         });
-        if (result.data.data.length == 0) {
-          toast.error("هیچ تیکتی یافت نشد");
-          return;
-        }
-        setTicket(result.data.data);
-      } catch (error: any) {
-        toast.error("لطفا دقایقی بعد امتحان کنید");
+
+        setTickets(result.data.data);
+      } catch (error) {
+        toast({ description: "مشکلی در دریافت اطلاعات پیش آمده" });
       } finally {
         setLoading(false);
       }
     };
     getTickets();
-  }, [userInfo.token]);
-  useEffect(() => {
-    // if (ticket !== null) {
-    //   console.log("updated ticket: ", ticket);
-    // }
-  }, [ticket]);
-  return { loading, ticket };
+  }, [userInfo.token, tickets]);
+
+  return { loading, tickets };
 };
 
 export default useGetTickets;
