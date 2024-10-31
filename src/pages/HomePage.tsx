@@ -10,11 +10,9 @@ const HomePage = () => {
         <FaEarthEurope />
         فارسی
       </div> */}
-      <div className="">
-        <Hero />
-        <SelectedArticles />
-        <ArticleListings />
-      </div>
+      <Hero />
+      <SelectedArticles />
+      <ArticleListings />
     </section>
   );
 };

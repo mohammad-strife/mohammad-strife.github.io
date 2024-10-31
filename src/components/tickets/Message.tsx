@@ -13,9 +13,7 @@ const Message = () => {
         className={`chat-bubble text-white text-right ${
           fromMe ? `bg-blue-500` : ` bg-blue-800`
         }`}
-      >
-        
-      </div>
+      ></div>
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
         12:42
       </div>

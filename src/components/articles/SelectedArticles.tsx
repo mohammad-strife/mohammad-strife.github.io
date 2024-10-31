@@ -5,64 +5,63 @@ const SelectedArticles = () => {
   return (
     <section className="my-20">
       <p className="text-3xl mb-10">مقالات منتخب این ماه</p>
-      <div className="grid grid-cols-12 text-white">
-        <div className="col-span-5 col-start-2 p-2 relative">
-          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md">
+      <div className="hidden md:grid grid-cols-12">
+        <div className="md:col-span-5 md:col-start-2 p-2 relative text-white">
+          <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
-          <span className="absolute bottom-10 right-6 text-xl">
+          <span className="absolute bottom-8 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
           <Link to="" className="absolute left-6 bottom-6 underline">
             ادامه مطلب
           </Link>
         </div>
-        <div className="col-span-5 p-2 relative">
-          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md">
+        <div className="md:col-span-5 p-2 relative text-white">
+          <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
-          <span className="absolute bottom-10 right-6 text-xl">
+          <span className="absolute bottom-8 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
           <Link to="" className="absolute left-6 bottom-6 underline">
             ادامه مطلب
           </Link>
         </div>
-
-        <div className="col-span-4 p-2 relative">
-          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
+      </div>
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 md:col-span-4 px-4 md:pqeqecczzzfafaj py-2 relative text-white">
+          <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
-          <span className="absolute bottom-10 right-6">
+          <span className="absolute bottom-8 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
           <Link to="" className="absolute left-6 bottom-6 underline">
             ادامه مطلب
           </Link>
         </div>
-
-        <div className="col-span-4 p-2 relative">
-          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
+        <div className="col-span-12 md:col-span-4 px-4 md:pqeqecczzzfafaj py-2 relative text-white">
+          <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
-          <span className="absolute bottom-10 right-6">
+          <span className="absolute bottom-8 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
           <Link to="" className="absolute left-6 bottom-6 underline">
             ادامه مطلب
           </Link>
         </div>
-
-        <div className="col-span-4 p-2 relative">
-          <span className="absolute left-4 top-4 bg-btnOrange p-1 rounded-md text-sm">
+        <div className="col-span-12 md:col-span-4 px-4 md:pqeqecczzzfafaj py-2 relative text-white">
+          <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
             گردشگری
           </span>
           <img src={articles} alt="" className="rounded-md" />
-          <span className="absolute bottom-10 right-6">
+          <span className="absolute bottom-8 right-6 text-xl">
             شب در یزد کجا برویم
           </span>
           <Link to="" className="absolute left-6 bottom-6 underline">

@@ -9,7 +9,7 @@ const ViewTicketPage = () => {
   console.log(id)
   // const ticket: any = useLoaderData();
   return (
-    <div className="w-[943px] mx-auto bg-bgTicket my-10 rounded-md">
+    <div className="w-[943px] mx-auto bg-bgTicket mb-10 rounded-md">
       {/* top section */}
       <div className="grid grid-cols-12 p-6 border-b-2 border-gray-400">
         <div className="col-span-10 flex justify-between items-center">

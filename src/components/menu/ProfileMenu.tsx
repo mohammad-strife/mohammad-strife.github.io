@@ -21,7 +21,7 @@ const ProfileMenu = () => {
 
   return (
     <div
-      className={`shadow-3xl flex flex-col rounded-lg p-2 ${
+      className={`shadow-3xl flex flex-col rounded-lg p-2 mb-3 ${
         isOpen ? "w-[240px]" : "w-[65px]"
       }`}
     >

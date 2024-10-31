@@ -18,6 +18,7 @@ import PublishArticle from "./pages/articles/PublishArticle";
 import MyPublishedArticles from "./pages/articles/MyPublishedArticles";
 import ArticlesPage from "./pages/articles/ArticlesPage";
 import TicketLayout from "./layouts/TicketLayout";
+import useArticleLoader from "./hooks/useArticleLoader";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -35,7 +36,11 @@ const App = () => {
             </Route>
           </Route>
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/article/:id" element={<ArticlePage />} />
+          <Route
+            path="article/:id"
+            element={<ArticlePage />}
+            loader={useArticleLoader}
+          />
           <Route path="/new-experience" element={<NewExperience />} />
           <Route path="/publish-article" element={<PublishArticle />} />
           <Route path="/published-article" element={<MyPublishedArticles />} />

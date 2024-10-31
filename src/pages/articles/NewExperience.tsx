@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banana from "@/assets/videos/banana.mp4";
 import axios from "@/api/axios";
-
 import CkEditor from "@/components/articles/CkEditor";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -20,7 +19,7 @@ const ArticleSchema = z.object({
 type ArticleForm = z.infer<typeof ArticleSchema>;
 
 const NewExperience = () => {
-  const [editorData, setEditorData] = useState("");
+  const [content, setContent]: any = useState();
   const { userInfo } = useSelector((state: any) => state.auth);
 
   const {
@@ -33,12 +32,12 @@ const NewExperience = () => {
 
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<ArticleForm> = async (data: any) => {
-    console.log({ ...data, body: editorData });
+    console.log({ ...data, body: content });
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post(
         "/article",
-        JSON.stringify({ ...data, body: editorData }),
+        { ...data, body: content },
         {
           headers: {
             "Content-Type": "application/json",
@@ -96,9 +95,10 @@ const NewExperience = () => {
           )}
         </div>
         <div className="col-span-12 space-y-10">
-          <CkEditor setEditorData={setEditorData} {...register("body")} />
+          <CkEditor content={content} setContent={setContent} />
 
-          <div className="text-left">
+            </div >
+          <div className="col-span-12 text-left">
             <button
               type="button"
               className="rounded-md bg-inputTicket p-5 px-10 mx-2"
@@ -112,7 +112,6 @@ const NewExperience = () => {
               ادامه
             </button>
           </div>
-        </div>
       </form>
     </section>
   );
