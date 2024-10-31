@@ -1,9 +1,8 @@
 import axios from "@/api/axios";
 
-const useArticleLoader = async ({ params }:any) => {
-  const res: any = await axios.get(`/article/${params.id}`);
-  const data = await res.json();
-  return data;
+const useArticleLoader = async ({ params }: any) => {
+  const data = await axios.get(`article_details/${params.id}`);
+  return data.data.data[0];
 };
 
 export default useArticleLoader;
