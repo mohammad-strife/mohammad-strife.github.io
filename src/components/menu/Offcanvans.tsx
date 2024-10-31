@@ -14,10 +14,9 @@ const Offcanvans = () => {
   const [term, setTerm] = useState("");
   return (
     <>
-      <div className="drawer z-50">
+      {/* <div className="drawer z-50">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-          {/* Page content here */}
           <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
             <RxTextAlignJustify className="size-7" />
           </label>
@@ -52,7 +51,6 @@ const Offcanvans = () => {
             </form>
 
             <ul className="">
-              {/* Sidebar content here */}
               <li>
                 <Link to="" className="flex items-center gap-1 my-2">
                   <CiMobile3 className="text-3xl" />
@@ -86,7 +84,7 @@ const Offcanvans = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
