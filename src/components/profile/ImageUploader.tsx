@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 const ImageUploader: React.FC<{
   setUrl: (url: any) => void;
   setFile: (file: any) => void;
-}> = ({ setFile, setUrl }) => {
-  const [image, setImage] = useState<string | null>(null);
+  image: (image: any) => void;
+  setImage: (setImage: any) => void;
+}> = ({ setFile, setUrl, image, setImage }: any) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { userInfo } = useSelector((state: any) => state.auth);
 
@@ -29,7 +30,9 @@ const ImageUploader: React.FC<{
 
       setUrl(file_path);
       setFile(formData);
-      // alert("Image uploaded successfully");
+      console.log(formData);
+      console.log(result);
+      alert("Image uploaded successfully");
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -72,7 +75,6 @@ const ImageUploader: React.FC<{
         <div className="relative rounded-full">
           <img
             src={image}
-            alt="Uploaded Preview"
             className="w-20 h-20 object-cover rounded-full shadow-md"
           />
           <button
