@@ -2,10 +2,11 @@ import share from "@/assets/images/share.png";
 import saftCo from "@/assets/images/main-logo.png";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
-import article from "@/assets/images/footer-image.png";
-// import ArticleData from "@/components/articles/ArticleData";
+import articleImg from "@/assets/images/footer-image.png";
+import { useLoaderData } from "react-router-dom";
 
 const ArticlePage = () => {
+  const article: any = useLoaderData();
   return (
     <section className="container mx-auto px-10">
       <div className="md:hidden items-center gap-3 flex">
@@ -16,13 +17,10 @@ const ArticlePage = () => {
         />
         <span>علرضا قربانی</span>
       </div>
-      <p className="text-3xl">برای سفر به شیراز کجا ها بریم؟</p>
+      <p className="text-3xl">{article.title}</p>
       <div className="grid grid-cols-12 md:border-b md:border-gray-700 mb-6">
         <div className="col-span-12 md:col-span-6 flex">
-          <span className="my-5">
-            شیراز مهد ادب و فرهنگ فارسی با هوایی آکنده از بوی عطر بهار نارنج در
-            فصل بهار هر مسافری را برای سفر به این شهر وسوسه می کند
-          </span>
+          <span className="my-5">{article.body}</span>
         </div>
         <div className="col-span-4 col-start-9 flex items-center">
           <button className="border-2 border-btnOrange rounded-md py-1 px-2 hidden md:flex items-center ml-4">
@@ -58,7 +56,7 @@ const ArticlePage = () => {
         </div>
       </div>
       <div className="grid grid-cols-10">
-        <img src={article} alt="" className="col-span-10 rounded-md" />
+        <img src={articleImg} alt="" className="col-span-10 rounded-md" />
         <div className="col-span-12">{/* <ArticleData /> */}</div>
       </div>
     </section>
