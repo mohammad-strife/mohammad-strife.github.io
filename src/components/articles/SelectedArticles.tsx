@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import articleImg from "../../assets/images/footer-image.png";
-import { CoustomCarousel } from "../CoustomCarousel";
+import { CoustomCarousel } from "./CoustomCarousel";
 import axios from "@/api/axios";
 import { useEffect, useState } from "react";
 import {
@@ -10,7 +10,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Article } from "../CoustomCarousel";
+import { Article } from "./CoustomCarousel";
+import ArticleSkeleton from "./ArticleSkeleton";
+import SelectedArticleSkeleton from "./SelectedArticleSkeleton";
 
 const SelectedArticles = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article[]>([]);
@@ -30,25 +32,37 @@ const SelectedArticles = () => {
     <section className="my-20">
       <p className="text-3xl mb-10">مقالات منتخب این ماه</p>
 
-      <div className="hidden md:flex p-4">
-        {firstRow.map((item: any) => (
-          <div className="p-2 relative text-white" key={item.id}>
-            <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
-              {item.type}
-            </span>
-            <img src={articleImg} alt="" className="rounded-md" />
-            <span className="absolute bottom-8 right-6 text-xl">
-              {item.title}
-            </span>
-            <Link
-              to={`/article/${item.id}`}
-              className="absolute left-6 bottom-6 underline"
+      <div className="flex px-3">
+        {selectedArticle &&
+        Array.isArray(selectedArticle) &&
+        selectedArticle.length > 0 ? (
+          firstRow.map((item: any) => (
+            <div
+              className="p-2 relative text-white hidden md:flex"
+              key={item.id}
             >
-              ادامه مطلب
-            </Link>
-          </div>
-        ))}
+              <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
+                {item.type}
+              </span>
+              <img src={articleImg} alt="" className="rounded-md" />
+              <span className="absolute bottom-8 right-6 text-xl">
+                {item.title}
+              </span>
+              <Link
+                to={`/article/${item.id}`}
+                className="absolute left-6 bottom-6 underline"
+              >
+                ادامه مطلب
+              </Link>
+            </div>
+          ))
+        ) : (
+          <>
+            <SelectedArticleSkeleton />
+          </>
+        )}
       </div>
+
       <div className="grid grid-cols-12 md:hidden ">
         <CoustomCarousel articles={firstRow} />
       </div>

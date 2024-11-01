@@ -1,4 +1,4 @@
-import ComboBox from "@/components/ComboBox";
+import ComboBox from "@/components/articles/ComboBox";
 export enum CategoryType {
   Article,
   PublishArticle,

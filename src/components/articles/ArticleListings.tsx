@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import axios from "@/api/axios";
-import ArticleSkeleton from "../ArticleSkeleton";
-import { CustomPagination } from "../PaginationCustom";
+import ArticleSkeleton from "./ArticleSkeleton";
+import { CustomPagination } from "@/components/articles/PaginationCustom";
 const ArticleListings = () => {
   const [articles, setArticles]: any = useState();
   const [loading, setLoading] = useState(true);
@@ -33,6 +33,7 @@ const ArticleListings = () => {
             <CustomPagination articles={articles} />
           ) : (
             <div className="space-y-8">
+              <ArticleSkeleton />
               <ArticleSkeleton />
               <ArticleSkeleton />
               <ArticleSkeleton />
