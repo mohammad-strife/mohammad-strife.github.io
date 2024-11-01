@@ -1,4 +1,4 @@
-const Article = () => {
+const PublishingArticle = () => {
   return (
     <div className="bg-MyArticles flex justify-between rounded-md p-5 text-white my-10 px-10">
       <div className="flex flex-col text-center gap-5">
@@ -20,4 +20,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default PublishingArticle;

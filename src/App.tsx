@@ -24,7 +24,7 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} loader={useArticleLoader} />
+        <Route index element={<HomePage />} />
         {/* Private Routes */}
         <Route path="" element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
