@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import axios from "@/api/axios";
-import ArticleListing from "./ArticleListing";
-// import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import ArticleSkeleton from "../ArticleSkeleton";
+import { CustomPagination } from "../PaginationCustom";
 const ArticleListings = () => {
   const [articles, setArticles]: any = useState();
   const [loading, setLoading] = useState(true);
-
-  // const { userInfo } = useSelector((state: any) => state.auth);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -34,11 +30,7 @@ const ArticleListings = () => {
         <>
           <p className="text-right mb-10">مقالات جدید این ماه</p>
           {articles && Array.isArray(articles) && articles.length > 0 ? (
-            articles.map((article: any) => (
-              <Link to={`/article/${article.id}`} key={article.id}>
-                <ArticleListing article={article} />
-              </Link>
-            ))
+            <CustomPagination articles={articles} />
           ) : (
             <div className="space-y-8">
               <ArticleSkeleton />
