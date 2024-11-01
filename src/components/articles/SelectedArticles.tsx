@@ -3,7 +3,6 @@ import articleImg from "../../assets/images/footer-image.png";
 import { CoustomCarousel } from "../CoustomCarousel";
 import axios from "@/api/axios";
 import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -11,9 +10,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Article } from "../CoustomCarousel";
 
 const SelectedArticles = () => {
-  const [selectedArticle, setSelectedArticle]: any = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState<Article[]>([]);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -49,26 +49,13 @@ const SelectedArticles = () => {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-12">
-        <Carousel className="block md:hidden col-span-10" dir="ltr">
-          <CarouselContent>
-            {firstRow.map((item: any) => (
-              <CarouselItem key={item.id}>
-                <div className="">
-                  <img src={articleImg} alt="" />
-                  {item.title}
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+      <div className="grid grid-cols-12 md:hidden ">
+        <CoustomCarousel articles={firstRow} />
       </div>
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 p-3">
         {secondRow.map((item: any) => (
           <div
-            className="col-span-12 md:col-span-4 px-4 md:pqeqecczzzfafaj py-2 relative text-white"
+            className="col-span-12 md:col-span-4 px-4 md:p-2 py-2 relative text-white"
             key={item.id}
           >
             <span className="absolute left-6 top-4 bg-btnOrange p-1 rounded-md text-black text-sm">
