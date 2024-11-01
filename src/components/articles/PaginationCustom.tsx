@@ -8,13 +8,13 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Link } from "react-router-dom";
-import ArticleListing from "./articles/ArticleListing";
-import { Article } from "./CoustomCarousel";
+import ArticleListing from "@/components//articles/ArticleListing";
+import { Article } from "@/components/articles/CoustomCarousel";
 interface CustomPaginationProps {
   articles: Article[];
 }
 
-const articlesPerPage = 2;
+const articlesPerPage = 3;
 
 const CustomPagination = ({ articles }: CustomPaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1);
