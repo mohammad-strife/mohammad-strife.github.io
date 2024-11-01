@@ -17,10 +17,16 @@ const ArticlePage = () => {
         />
         <span>علرضا قربانی</span>
       </div>
-      <p className="text-3xl">{article.title}</p>
+      <p
+        className="text-3xl"
+        dangerouslySetInnerHTML={{ __html: article.title }}
+      ></p>
       <div className="grid grid-cols-12 md:border-b md:border-gray-700 mb-6">
         <div className="col-span-12 md:col-span-6 flex">
-          <span className="my-5">{article.body}</span>
+          <span
+            className="my-5"
+            dangerouslySetInnerHTML={{ __html: article.body }}
+          ></span>
         </div>
         <div className="col-span-4 col-start-9 flex items-center">
           <button className="border-2 border-btnOrange rounded-md py-1 px-2 hidden md:flex items-center ml-4">
