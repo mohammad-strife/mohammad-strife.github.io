@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "@/api/axios";
 import { Button } from "../ui/button";
 import safarCo from "@/assets/images/main-logo.png";
+import { useToast } from "@/hooks/use-toast";
 
 const UserSchema = z.object({
   mobile: z.string().min(11, {
@@ -20,6 +21,7 @@ const UserSchema = z.object({
 type FormFields = z.infer<typeof UserSchema>;
 
 const SignupForm = ({ setStep, setMobile }: any) => {
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
@@ -37,7 +39,10 @@ const SignupForm = ({ setStep, setMobile }: any) => {
       setMobile(data.mobile);
       UserSchema.safeParse(data).success && setStep("Otp");
     } catch (error) {
-      console.log({ message: "لطفا دقایقی بعد امتحان کنید" });
+      toast({
+        variant: "destructive",
+        description: "لطفا دقایقی بعد امتحان کنید",
+      });
     }
   };
 
