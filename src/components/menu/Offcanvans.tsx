@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxTextAlignJustify } from "react-icons/rx";
-import { useState } from "react";
 import { Input } from "../ui/input";
 import { RiSearch2Line } from "react-icons/ri";
 import { CiMobile3 } from "react-icons/ci";
@@ -10,83 +10,85 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { FaRegFaceGrinBeam } from "react-icons/fa6";
 import { CgClose } from "react-icons/cg";
 
-const Offcanvans = () => {
-  const [term, setTerm] = useState("");
+const OffCanvas: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOffCanvas = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
-      {/* <div className="drawer z-50">
-        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
-            <RxTextAlignJustify className="size-7" />
-          </label>
-        </div>
-        <div className="drawer-side">
-          <label
-            htmlFor="my-drawer"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          ></label>
-          <div className="menu bg-white text-base-content min-h-full w-80 p-4">
-            <span className="my-5 text-white w-6">
-              <label
-                htmlFor="my-drawer"
-                className="drawer-button cursor-pointer"
-              >
-                <CgClose className="border border-black text-black rounded-sm size-6 p-1" />
-              </label>
-            </span>
-            <form className="">
-              <Input
-                type="text"
-                className="rounded-md text-gray-500 border-btnApp focus:border-btnOrange my-5"
-                placeholder="جستحو کنید"
-                onChange={(e) => setTerm(e.target.value)}
-                required
-                value={term}
-              />
-              <div className="relative">
-                <RiSearch2Line className="text-gray-500 mt-3 absolute bottom-8 right-20" />
-              </div>
-            </form>
+      {/* Toggle button */}
+      <button onClick={toggleOffCanvas} className="p-2 rounded-md">
+        <RxTextAlignJustify className="size-7" />
+      </button>
 
-            <ul className="">
-              <li>
-                <Link to="" className="flex items-center gap-1 my-2">
-                  <CiMobile3 className="text-3xl" />
-                  دانلود اپلیکیشن سفرکو
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="flex items-center gap-1 my-2">
-                  <CgFileDocument className="text-3xl" />
-                  مقالات گردشگری
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="flex items-center gap-1 my-2">
-                  <LiaMapMarkedSolid className="text-3xl" />
-                  ایران شناسی
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="flex items-center gap-1 my-2">
-                  <IoCalendarOutline className="text-3xl" />
-                  برنامه ریزی سفر
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="flex items-center gap-1 my-2">
-                  <FaRegFaceGrinBeam className="text-3xl" />
-                  تجربه های سفر
-                </Link>
-              </li>
-            </ul>
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleOffCanvas} // Clicking outside will close it
+        />
+      )}
+
+      {/* Off-canvas panel */}
+      <div
+        className={`fixed inset-y-0 right-0 transform p-4 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50 w-80 bg-white shadow-lg`}
+      >
+        {/* Close button */}
+        <button onClick={toggleOffCanvas} className="p-2 text-gray-600">
+          <span className="my-5 text-white w-6">
+            <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
+              <CgClose className="border border-black text-black rounded-sm size-6 p-1" />
+            </label>
+          </span>
+        </button>
+
+        {/* Off-canvas content */}
+
+        <form className="">
+          <Input
+            type="text"
+            className="rounded-md text-gray-500 border-btnApp focus:border-btnOrange my-5"
+            placeholder="جستحو کنید"
+          />
+          <div className="relative">
+            <RiSearch2Line className="text-gray-500 mt-3 absolute bottom-8 right-20" />
           </div>
+        </form>
+
+        <div className="">
+          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+            <CiMobile3 className="text-3xl" />
+            دانلود اپلیکیشن سفرکو
+          </Link>
+
+          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+            <CgFileDocument className="text-3xl" />
+            مقالات گردشگری
+          </Link>
+
+          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+            <LiaMapMarkedSolid className="text-3xl" />
+            ایران شناسی
+          </Link>
+
+          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+            <IoCalendarOutline className="text-3xl" />
+            برنامه ریزی سفر
+          </Link>
+
+          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+            <FaRegFaceGrinBeam className="text-3xl" />
+            تجربه های سفر
+          </Link>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
 
-export default Offcanvans;
+export default OffCanvas;
