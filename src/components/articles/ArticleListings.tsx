@@ -10,8 +10,8 @@ const ArticleListings = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const result: any = await axios.get("/home");
-        console.log(result.data.data.newest_products);
+        const result = await axios.get("/home");
+        console.log(result);
         setArticles(result.data.data.newest_products);
       } catch (error) {
         console.log("Error fetching data", error);

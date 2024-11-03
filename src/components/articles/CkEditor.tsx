@@ -4,8 +4,6 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const CKEditorComponent: any = ({ content, setContent }: any) => {
-  // const [content, setContent] = useState<string>("");
-
   return (
     <div>
       <CKEditor

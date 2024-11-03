@@ -3,21 +3,17 @@ import axios from "@/api/axios";
 import { FcAddImage } from "react-icons/fc";
 import { useSelector } from "react-redux";
 
-const ImageUploader: React.FC<{
-  setUrl: (url: any) => void;
-  setFile: (file: any) => void;
-  image: (image: any) => void;
-  setImage: (setImage: any) => void;
-}> = ({ setFile, setUrl, image, setImage }: any) => {
+const ArticleImageUploader = ({ setUrl }: any) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { userInfo } = useSelector((state: any) => state.auth);
+  const [cover, setCover]: any = useState<string | null>(null);
 
   const handleSubmit = async () => {
     if (!selectedFile) return;
 
     const formData = new FormData();
-    formData.append("upload_file", selectedFile);
-    // console.log(...formData);
+    formData.append("upload", selectedFile);
+    // console.log(formData);
 
     try {
       const result = await axios.post("/temp_media", formData, {
@@ -26,10 +22,8 @@ const ImageUploader: React.FC<{
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      const file_path = result.data.file_path;
-
-      setUrl(file_path);
-      setFile(formData);
+      const { url } = result.data;
+      setUrl(url);
 
       alert("Image uploaded successfully");
     } catch (error) {
@@ -40,7 +34,7 @@ const ImageUploader: React.FC<{
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
+      setCover(URL.createObjectURL(file));
       setSelectedFile(file);
     }
   };
@@ -54,7 +48,7 @@ const ImageUploader: React.FC<{
 
   return (
     <div className="flex flex-col items-center rounded-lg">
-      {!image ? (
+      {!cover ? (
         <>
           <label
             htmlFor="file-upload"
@@ -72,13 +66,10 @@ const ImageUploader: React.FC<{
         </>
       ) : (
         <div className="relative rounded-full">
-          <img
-            src={image}
-            className="w-20 h-20 object-cover rounded-full shadow-md"
-          />
+          <img src={cover} className="object-cover rounded-lg shadow-md" />
           <button
             onClick={() => document.getElementById("file-upload")?.click()}
-            className="absolute bottom-1 left-14 p-1 bg-white rounded-full shadow hover:bg-gray-200"
+            className="absolute bottom-2 right-2 p-1 bg-white rounded-full shadow hover:bg-gray-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -108,4 +99,4 @@ const ImageUploader: React.FC<{
   );
 };
 
-export default ImageUploader;
+export default ArticleImageUploader;

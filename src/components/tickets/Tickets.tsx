@@ -4,6 +4,7 @@ import Spinner from "../Spinner";
 
 const Tickets = () => {
   const { loading, tickets }: any = useGetTickets();
+  console.log(tickets);
 
   return (
     <>

@@ -29,8 +29,7 @@ const useGetTickets = () => {
       }
     };
     getTickets();
-  }, [userInfo.token, tickets]);
-
+  }, [userInfo.token]);
   return { loading, tickets };
 };
 

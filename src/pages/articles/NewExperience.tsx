@@ -8,12 +8,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSelector } from "react-redux";
 import ArticleMenu from "@/components/menu/ArticleMenu";
+import ArticleImageUploader from "@/components/articles/ArticleImageUploader";
 
 const ArticleSchema = z.object({
   title: z.string().min(4, {
     message: "عنوان حداقل باید ۴ کارکتر باشد",
   }),
-  body: z.any(),
 });
 
 type ArticleForm = z.infer<typeof ArticleSchema>;
@@ -21,6 +21,7 @@ type ArticleForm = z.infer<typeof ArticleSchema>;
 const NewExperience = () => {
   const [content, setContent]: any = useState();
   const { userInfo } = useSelector((state: any) => state.auth);
+  const [url, setUrl]: any = useState();
 
   const {
     register,
@@ -32,12 +33,12 @@ const NewExperience = () => {
 
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<ArticleForm> = async (data: any) => {
-    console.log({ ...data, body: content });
+    console.log({ ...data, body: content, url });
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post(
         "/article",
-        { ...data, body: content },
+        { ...data, body: content, url },
         {
           headers: {
             "Content-Type": "application/json",
@@ -94,24 +95,26 @@ const NewExperience = () => {
             <div className="text-right">{errors.title.message}</div>
           )}
         </div>
+        <div className="col-span-12">
+          <ArticleImageUploader setUrl={setUrl} />
+        </div>
         <div className="col-span-12 space-y-10">
           <CkEditor content={content} setContent={setContent} />
-
-            </div >
-          <div className="col-span-12 text-left">
-            <button
-              type="button"
-              className="rounded-md bg-inputTicket p-5 px-10 mx-2"
-            >
-              انصراف
-            </button>
-            <button
-              type="submit"
-              className="rounded-md bg-btnOrange p-5 px-10 mr-2"
-            >
-              ادامه
-            </button>
-          </div>
+        </div>
+        <div className="col-span-12 text-left">
+          <button
+            type="button"
+            className="rounded-md bg-inputTicket p-5 px-10 mx-2"
+          >
+            انصراف
+          </button>
+          <button
+            type="submit"
+            className="rounded-md bg-btnOrange p-5 px-10 mr-2"
+          >
+            ادامه
+          </button>
+        </div>
       </form>
     </section>
   );
