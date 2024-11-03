@@ -22,12 +22,7 @@ const ProfileSchema = z.object({
   name: z.string().min(4, {
     message: "نام حداقل باید ۴ کارکتر باشد",
   }),
-  mobile: z
-    .string()
-    .min(11, {
-      message: "شماره همراه حداقل باید 11 عدد باشد",
-    })
-    .nullable(),
+  mobile: z.string(),
 });
 
 type ProfileForm = z.infer<typeof ProfileSchema>;
@@ -35,9 +30,10 @@ type ProfileForm = z.infer<typeof ProfileSchema>;
 const ProfilePage = () => {
   const [userProfile, setUserProfile]: any = useState({});
   const [image, setImage]: any = useState<string | null>(null);
-  const [url, setUrl]: any = useState();
+  const [path, setPath]: any = useState();
   const [file, setFile]: any = useState();
-  const [isComplete, setIsComplete] = useState({});
+  const [complete, setComplete] = useState(false);
+
   const { toast } = useToast();
   const { userInfo } = useSelector((state: any) => state.auth);
   const {
@@ -56,12 +52,18 @@ const ProfilePage = () => {
         });
         console.log(result);
         const profile = result.data.data.user;
-        if (!profile.name) {
-          toast({ description: "لطفا پروفایل خود را تکمیل کنید" });
+        console.log(profile);
+        if (profile.name) {
+          setComplete(true);
+        } else {
+          toast({
+            variant: "destructive",
+            description: "لطفا پروفایل خود را تکمیل کنید",
+          });
         }
-        console.log(result.data.data.user.photo);
-        setImage(result.data.data.user.photo);
-        setUserProfile(result.data.data.user);
+        setImage(profile.photo);
+        setUserProfile(profile);
+        console.log(result.data.data);
       } catch (error) {
         console.log(error);
         toast({
@@ -75,7 +77,7 @@ const ProfilePage = () => {
 
   const onSubmit: SubmitHandler<ProfileForm> = async (data) => {
     try {
-      file.append("file_path", url);
+      file.append("path", path);
       file.append("mobile", data.mobile);
       file.append("name", data.name);
 
@@ -89,7 +91,10 @@ const ProfilePage = () => {
       toast({ description: "اطلاعات شما با موفقیت بروز شد" });
       console.log(result);
     } catch (error) {
-      toast({ description: "مشکلی در ثبت اطلاعات پیش آمده" });
+      toast({
+        variant: "destructive",
+        description: "مشکلی در ثبت اطلاعات پیش آمده",
+      });
     }
   };
 
@@ -98,7 +103,13 @@ const ProfilePage = () => {
       <p className="text-gray-500 mb-16 px-3">صفحه اصلی پروفایل کاربری</p>
       <div className="grid grid-cols-12">
         <div className=" hidden md:block md:col-span-3">
-          <ProfileMenu />
+          {complete ? (
+            <ProfileMenu />
+          ) : (
+            <div className="opacity-50">
+              <ProfileMenu />
+            </div>
+          )}
         </div>
         <div className="col-span-12 md:col-span-7 flex justify-center">
           <Card className="w-[340px] bg-profile_card">
@@ -106,7 +117,7 @@ const ProfilePage = () => {
               <MobileProfileMenu />
               <ImageUploader
                 setFile={setFile}
-                setUrl={setUrl}
+                setPath={setPath}
                 image={image}
                 setImage={setImage}
               />

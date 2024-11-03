@@ -4,11 +4,11 @@ import { FcAddImage } from "react-icons/fc";
 import { useSelector } from "react-redux";
 
 const ImageUploader: React.FC<{
-  setUrl: (url: any) => void;
+  setPath: (path: any) => void;
   setFile: (file: any) => void;
   image: (image: any) => void;
   setImage: (setImage: any) => void;
-}> = ({ setFile, setUrl, image, setImage }: any) => {
+}> = ({ setFile, setPath, image, setImage }: any) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { userInfo } = useSelector((state: any) => state.auth);
 
@@ -16,7 +16,7 @@ const ImageUploader: React.FC<{
     if (!selectedFile) return;
 
     const formData = new FormData();
-    formData.append("upload_file", selectedFile);
+    formData.append("upload", selectedFile);
     // console.log(...formData);
 
     try {
@@ -26,11 +26,9 @@ const ImageUploader: React.FC<{
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      const file_path = result.data.file_path;
-
-      setUrl(file_path);
+      const { path } = result.data;
+      setPath(path);
       setFile(formData);
-
       alert("Image uploaded successfully");
     } catch (error) {
       console.error("Error uploading image:", error);
