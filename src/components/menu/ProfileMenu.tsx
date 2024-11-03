@@ -4,18 +4,14 @@ import { CiBellOn } from "react-icons/ci";
 import { HiOutlineTicket } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { IoMenu, IoClose, IoExitOutline } from "react-icons/io5";
-import { useDispatch } from "react-redux";
-import { logout } from "../../app/slices/authSlice";
-import linkedin from "../../assets/images/LinkedIn_icon_circle.svg.png";
+import useGetUser from "@/hooks/useGetUser";
+import LogoutModal from "../LogoutModal";
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(true);
 
-  const dispatch = useDispatch();
+  const { user } = useGetUser();
 
-  const logoutHandler = () => {
-    dispatch(logout());
-  };
 
   const showTitle = isOpen ? "block" : "hidden";
 
@@ -43,11 +39,13 @@ const ProfileMenu = () => {
           )}
         </button>
         <img
-          src={linkedin}
+          src={user.photo}
           alt=""
-          className={`mx-auto ${isOpen ? "size-16 my-2" : `size-8 my-1`}`}
+          className={`mx-auto rounded-full ${
+            isOpen ? "size-16 my-2" : `size-8 my-1`
+          }`}
         />
-        <p className={`text-center ${showTitle}`}>محمد زارعی</p>
+        <p className={`text-center ${showTitle}`}>{user.name}</p>
       </div>
       <div
         id="list_icons"
@@ -55,7 +53,7 @@ const ProfileMenu = () => {
       >
         <Link
           id="link_tag"
-          to=""
+          to="/profile"
           className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
         >
           <BsPersonCircle />
@@ -82,10 +80,11 @@ const ProfileMenu = () => {
           id="link_tag"
           to=""
           className="flex items-center gap-2 hover:bg-hoverMenu rounded-md p-2"
-          onClick={() => logoutHandler()}
         >
           <IoExitOutline />
-          <span className={showTitle}>خروج از حساب کاربری</span>
+          <span className={`w-full ${showTitle}`}>
+            <LogoutModal />
+          </span>
         </Link>
       </div>
     </div>
