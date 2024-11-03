@@ -8,7 +8,7 @@ import { useLoaderData } from "react-router-dom";
 const ArticlePage = () => {
   const article: any = useLoaderData();
   return (
-    <section className="container mx-auto px-10">
+    <section className="container mx-auto px-10 my-10">
       <div className="md:hidden items-center gap-3 flex">
         <img
           src={saftCo}

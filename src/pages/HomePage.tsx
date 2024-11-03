@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import ArticleListings from "@/components/articles/ArticleListings";
 import SelectedArticles from "@/components/articles/SelectedArticles";
+// import SearchBar from "./articles/SearchBar";
 // import { FaEarthEurope } from "react-icons/fa6";
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
         فارسی
       </div> */}
       <Hero />
+      {/* <SearchBar /> */}
       <SelectedArticles />
       <ArticleListings />
     </section>

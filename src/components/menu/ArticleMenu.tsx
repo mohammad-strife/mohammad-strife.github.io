@@ -12,13 +12,15 @@ import {
   IoClose,
 } from "react-icons/io5";
 import { RiMedalLine, RiMedalFill } from "react-icons/ri";
-import linkedin from "@/assets/images/LinkedIn_icon_circle.svg.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import UseGetUser from "@/hooks/useGetUser";
 
 const ArticleMenu = () => {
   const [isOpen, setIsOpen] = useState(true);
   const showTitle = isOpen ? "block" : "hidden";
+  const { user } = UseGetUser();
+
   return (
     <div className="col-span-12 md:col-span-3 relative p-2">
       <div
@@ -44,11 +46,11 @@ const ArticleMenu = () => {
             )}
           </button>
           <img
-            src={linkedin}
+            src={user.photo}
             alt=""
-            className={`mx-auto ${isOpen ? "size-20 my-2" : `size-10 my-1`}`}
+            className={`mx-auto rounded-full ${isOpen ? "size-20 my-2" : `size-10 my-1`}`}
           />
-          <p className={`text-center ${showTitle}`}>محمد زارعی</p>
+          <p className={`text-center ${showTitle}`}>{user.name}</p>
         </div>
         <div
           id="list_icons"

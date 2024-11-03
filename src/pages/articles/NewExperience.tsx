@@ -21,7 +21,7 @@ type ArticleForm = z.infer<typeof ArticleSchema>;
 const NewExperience = () => {
   const [content, setContent]: any = useState();
   const { userInfo } = useSelector((state: any) => state.auth);
-  const [url, setUrl]: any = useState();
+  const [cover, setCover]: any = useState();
 
   const {
     register,
@@ -33,12 +33,12 @@ const NewExperience = () => {
 
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<ArticleForm> = async (data: any) => {
-    console.log({ ...data, body: content, url });
+    console.log({ ...data, body: content, cover });
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post(
         "/article",
-        { ...data, body: content, url },
+        { ...data, body: content, cover },
         {
           headers: {
             "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const NewExperience = () => {
           )}
         </div>
         <div className="col-span-12">
-          <ArticleImageUploader setUrl={setUrl} />
+          <ArticleImageUploader cover={cover} setCover={setCover} />
         </div>
         <div className="col-span-12 space-y-10">
           <CkEditor content={content} setContent={setContent} />

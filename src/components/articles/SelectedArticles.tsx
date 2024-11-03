@@ -3,15 +3,7 @@ import articleImg from "../../assets/images/footer-image.png";
 import { CoustomCarousel } from "./CoustomCarousel";
 import axios from "@/api/axios";
 import { useEffect, useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Article } from "./CoustomCarousel";
-import ArticleSkeleton from "./ArticleSkeleton";
 import SelectedArticleSkeleton from "./SelectedArticleSkeleton";
 
 const SelectedArticles = () => {
