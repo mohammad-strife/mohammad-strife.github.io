@@ -3,10 +3,9 @@ import axios from "@/api/axios";
 import { FcAddImage } from "react-icons/fc";
 import { useSelector } from "react-redux";
 
-const ArticleImageUploader = ({ setUrl }: any) => {
+const ArticleImageUploader = ({ cover, setCover }: any) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const { userInfo } = useSelector((state: any) => state.auth);
-  const [cover, setCover]: any = useState<string | null>(null);
 
   const handleSubmit = async () => {
     if (!selectedFile) return;
@@ -23,7 +22,7 @@ const ArticleImageUploader = ({ setUrl }: any) => {
         },
       });
       const { url } = result.data;
-      setUrl(url);
+      setCover(url);
 
       alert("Image uploaded successfully");
     } catch (error) {
