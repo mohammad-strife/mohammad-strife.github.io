@@ -2,6 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import axios from "@/api/axios";
 import { FcAddImage } from "react-icons/fc";
 import { useSelector } from "react-redux";
+import { Button } from "../ui/button";
 
 const ArticleImageUploader = ({ cover, setCover }: any) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -66,7 +67,7 @@ const ArticleImageUploader = ({ cover, setCover }: any) => {
       ) : (
         <div className="relative rounded-full">
           <img src={cover} className="object-cover rounded-lg shadow-md" />
-          <button
+          <Button
             onClick={() => document.getElementById("file-upload")?.click()}
             className="absolute bottom-2 right-2 p-1 bg-white rounded-full shadow hover:bg-gray-200"
           >
@@ -84,7 +85,7 @@ const ArticleImageUploader = ({ cover, setCover }: any) => {
                 d="M11 5H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-5m-6 1l9-9m-6 4l4 4"
               />
             </svg>
-          </button>
+          </Button>
           <input
             id="file-upload"
             type="file"

@@ -9,6 +9,7 @@ import { LiaMapMarkedSolid } from "react-icons/lia";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaRegFaceGrinBeam } from "react-icons/fa6";
 import { CgClose } from "react-icons/cg";
+import { Button } from "../ui/button";
 
 const OffCanvas: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +21,9 @@ const OffCanvas: React.FC = () => {
   return (
     <>
       {/* Toggle button */}
-      <button onClick={toggleOffCanvas} className="p-2 rounded-md">
-        <RxTextAlignJustify className="size-7" />
-      </button>
+      <Button onClick={toggleOffCanvas} className="rounded-md">
+        <RxTextAlignJustify />
+      </Button>
 
       {/* Overlay */}
       {isOpen && (
@@ -39,13 +40,13 @@ const OffCanvas: React.FC = () => {
         } transition-transform duration-300 ease-in-out z-50 w-80 bg-white shadow-lg`}
       >
         {/* Close button */}
-        <button onClick={toggleOffCanvas} className="p-2 text-gray-600">
+        <Button onClick={toggleOffCanvas} className="p-2 text-gray-600">
           <span className="my-5 text-white w-6">
             <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
               <CgClose className="border border-black text-black rounded-sm size-6 p-1" />
             </label>
           </span>
-        </button>
+        </Button>
 
         {/* Off-canvas content */}
 
@@ -61,27 +62,42 @@ const OffCanvas: React.FC = () => {
         </form>
 
         <div className="">
-          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+          <Link
+            to=""
+            className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg"
+          >
             <CiMobile3 className="text-3xl" />
             دانلود اپلیکیشن سفرکو
           </Link>
 
-          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+          <Link
+            to="/articles"
+            className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg"
+          >
             <CgFileDocument className="text-3xl" />
             مقالات گردشگری
           </Link>
 
-          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+          <Link
+            to=""
+            className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg"
+          >
             <LiaMapMarkedSolid className="text-3xl" />
             ایران شناسی
           </Link>
 
-          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+          <Link
+            to=""
+            className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg"
+          >
             <IoCalendarOutline className="text-3xl" />
             برنامه ریزی سفر
           </Link>
 
-          <Link to="" className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg">
+          <Link
+            to="/new-exprience"
+            className="flex items-center gap-1 my-2 hover:bg-gray-100 p-2 rounded-lg"
+          >
             <FaRegFaceGrinBeam className="text-3xl" />
             تجربه های سفر
           </Link>

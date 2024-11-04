@@ -6,6 +6,7 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { IoDocument } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import { Button } from "@/components/ui/button";
 
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
@@ -142,13 +143,13 @@ const NewTicketPage = () => {
             {/* {errors.file && (
             <div className="text-right mr-4 mt-2">{errors.file.message}</div>
           )} */}
-            <button
-              className="bg-btnOrange p-2 rounded-md"
+            <Button
+              className="bg-btnOrange p-2"
               disabled={isSubmitting}
               type="submit"
             >
               {isSubmitting ? "در حال ارسال" : "ارسال تیکت"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

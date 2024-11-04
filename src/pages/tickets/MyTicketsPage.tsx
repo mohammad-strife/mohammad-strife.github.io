@@ -3,6 +3,7 @@ import { Switch } from "@/components/ui/switch";
 import Tickets from "../../components/tickets/Tickets";
 import { GoPlusCircle } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 
 const MyTicketsPage = () => {
@@ -32,12 +33,12 @@ const MyTicketsPage = () => {
 
       <div className="px-10 py-4 overflow-auto">
         <div className="text-left">
-          <button className="p-2 bg-btnApp rounded-md">
+          <Button className="p-2 bg-btnApp">
             <Link to="new-ticket" className="flex items-center gap-2">
               تیکت جدید
               <GoPlusCircle />
             </Link>
-          </button>
+          </Button>
         </div>
         <Tickets />
       </div>

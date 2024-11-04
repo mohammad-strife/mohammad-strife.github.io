@@ -67,10 +67,13 @@ const Hero = () => {
               <p className="my-4">
                 تو هم اگر مکان خاصی رو میشناسی حتما به ما معرفی کن
               </p>
-              <button type="button" className="bg-gray-400 p-2 rounded-md flex items-center text-black gap-1">
+              <Button
+                type="button"
+                className="bg-gray-400 p-2 rounded-md flex items-center text-black gap-1"
+              >
                 <MdAddLocation />
                 افزودن مکان
-              </button>
+              </Button>
             </div>
           </div>
           <p className="text-right text-white text-xl col-span-2">

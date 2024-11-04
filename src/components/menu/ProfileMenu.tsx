@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { IoMenu, IoClose, IoExitOutline } from "react-icons/io5";
 import useGetUser from "@/hooks/useGetUser";
 import LogoutModal from "../LogoutModal";
+import { Button } from "../ui/button";
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,7 +29,7 @@ const ProfileMenu = () => {
             : "border-gray-400 text-center duration-1000 delay-500"
         }`}
       >
-        <button
+        <Button
           type="button"
           onClick={() => setIsOpen((prevState) => !prevState)}
         >
@@ -37,7 +38,7 @@ const ProfileMenu = () => {
           ) : (
             <IoMenu className="size-7" />
           )}
-        </button>
+        </Button>
         <img
           src={user.photo}
           alt=""

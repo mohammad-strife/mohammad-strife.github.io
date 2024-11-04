@@ -4,6 +4,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
 import articleImg from "@/assets/images/footer-image.png";
 import { useLoaderData } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const ArticlePage = () => {
   const article: any = useLoaderData();
@@ -29,10 +30,10 @@ const ArticlePage = () => {
           ></span>
         </div>
         <div className="col-span-4 col-start-9 flex items-center">
-          <button className="border-2 border-btnOrange rounded-md py-1 px-2 hidden md:flex items-center ml-4">
+          <Button className="border-2 border-btnOrange rounded-md py-1 px-2 hidden md:flex items-center ml-4">
             <img src={share} alt="" className="size-5" />
             <p className=""> اشتراک گذاری</p>
-          </button>
+          </Button>
           <div className="border-r border-gray-800 pr-4 hidden md:flex items-center gap-3">
             <img
               src={saftCo}
@@ -55,10 +56,10 @@ const ArticlePage = () => {
           </p>
         </div>
         <div className="flex items-end">
-          <button className="border-2 border-btnOrange rounded-md py-1 px-2 flex md:hidden items-center">
+          <Button className="border-2 border-btnOrange rounded-md py-1 px-2 flex md:hidden items-center">
             <img src={share} alt="" className="size-5" />
             <p className=""> اشتراک گذاری</p>
-          </button>
+          </Button>
         </div>
       </div>
       <div className="grid grid-cols-10">

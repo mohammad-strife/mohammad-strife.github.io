@@ -15,6 +15,7 @@ import { RiMedalLine, RiMedalFill } from "react-icons/ri";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import UseGetUser from "@/hooks/useGetUser";
+import { Button } from "../ui/button";
 
 const ArticleMenu = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -35,7 +36,7 @@ const ArticleMenu = () => {
               : "border-gray-400 text-center duration-1000 delay-500"
           }`}
         >
-          <button
+          <Button
             type="button"
             onClick={() => setIsOpen((prevState) => !prevState)}
           >
@@ -44,7 +45,7 @@ const ArticleMenu = () => {
             ) : (
               <IoMenu className="size-7" />
             )}
-          </button>
+          </Button>
           <img
             src={user.photo}
             alt=""

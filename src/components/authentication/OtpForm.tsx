@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/input-otp";
 import { FiClock } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "../ui/button";
 
 const OtpForm = ({ mobile, setStep }: any) => {
   const dispatch = useDispatch();
@@ -133,9 +134,9 @@ const OtpForm = ({ mobile, setStep }: any) => {
       </button>
 
       <small className="mb-10 mt-5 text-center underline">
-        <button type="button" onClick={() => setStep("Register")}>
+        <Button type="button" onClick={() => setStep("Register")}>
           ویرایش شماره موبایل
-        </button>
+        </Button>
       </small>
     </>
   );

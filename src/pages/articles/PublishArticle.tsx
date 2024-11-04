@@ -1,4 +1,5 @@
 import ComboBox from "@/components/articles/ComboBox";
+import { Button } from "@/components/ui/button";
 export enum CategoryType {
   Article,
   PublishArticle,
@@ -35,12 +36,12 @@ const PublishArticle = () => {
             </div>
           </div>
           <div className="relative h-3/6">
-            <button className="bg-inputBorder text-white p-4 rounded-lg absolute bottom-0 left-36">
+            <Button className="bg-inputBorder text-white p-4 absolute bottom-0 left-36">
               انصراف از انتشار مقاله
-            </button>
-            <button className="bg-sky-600 text-white p-4 rounded-lg absolute bottom-0 left-0">
+            </Button>
+            <Button className="bg-sky-600 text-white p-4 absolute bottom-0 left-0">
               منتشر کردن مقاله
-            </button>
+            </Button>
           </div>
         </form>
       </div>

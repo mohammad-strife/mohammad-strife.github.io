@@ -3,6 +3,7 @@ import { Switch } from "@/components/ui/switch";
 import { FiSearch } from "react-icons/fi";
 import SelectedArticles from "@/components/articles/SelectedArticles";
 import ArticleListings from "@/components/articles/ArticleListings";
+import { Button } from "@/components/ui/button";
 
 const ArticlesPage = () => {
   return (
@@ -62,12 +63,12 @@ const ArticlesPage = () => {
               <Switch id="airplane-mode" />
             </div>
             <div className="col-span-10 flex justify-end">
-              <button
+              <Button
                 type="submit"
                 className=" bg-btnOrange rounded-md p-2 text-black"
               >
                 اعمال فیلتر
-              </button>
+              </Button>
             </div>
           </div>
         </div>

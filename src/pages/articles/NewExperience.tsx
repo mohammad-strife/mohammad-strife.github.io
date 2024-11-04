@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSelector } from "react-redux";
 import ArticleMenu from "@/components/menu/ArticleMenu";
 import ArticleImageUploader from "@/components/articles/ArticleImageUploader";
+import { Button } from "@/components/ui/button";
 
 const ArticleSchema = z.object({
   title: z.string().min(4, {
@@ -102,18 +103,12 @@ const NewExperience = () => {
           <CkEditor content={content} setContent={setContent} />
         </div>
         <div className="col-span-12 text-left">
-          <button
-            type="button"
-            className="rounded-md bg-inputTicket p-5 px-10 mx-2"
-          >
+          <Button className="rounded-md bg-inputTicket p-5 px-10 mx-2">
             انصراف
-          </button>
-          <button
-            type="submit"
-            className="rounded-md bg-btnOrange p-5 px-10 mr-2"
-          >
+          </Button>
+          <Button className="rounded-md bg-btnOrange p-5 px-10 mr-2">
             ادامه
-          </button>
+          </Button>
         </div>
       </form>
     </section>
